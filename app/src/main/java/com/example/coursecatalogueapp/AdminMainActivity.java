@@ -1,15 +1,14 @@
 package com.example.coursecatalogueapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import androidx.appcompat.app.AppCompatActivity;
+public class AdminMainActivity extends Activity {
 
-public class AdminMainActivity extends AppCompatActivity {
-
-    private Button Accounts;
+    private Button accountsButton;
     private Button Courses;
 
 
@@ -18,23 +17,20 @@ public class AdminMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminmainpage);
 
-        Accounts = (Button)findViewById(R.id.Accounts);
+        accountsButton = (Button)findViewById(R.id.Accounts);
         Courses = (Button)findViewById(R.id.Courses);
 
-        Accounts.setOnClickListener(new View.OnClickListener() {
+        accountsButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
-                openAccounts();
+                Intent intent = new Intent(AdminMainActivity.this, Accounts.class);
+                startActivity(intent);
             }
         });
 
     }
-    public void openAccounts(){
-        Intent intent = new Intent(this, Accounts.class);
-        startActivity(intent);
-        
 
-    }
 
 
 

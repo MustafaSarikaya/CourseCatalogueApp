@@ -19,6 +19,7 @@
             android:layout_width="129dp"
             android:layout_height="48dp"
             android:layout_marginTop="16dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name6"
@@ -27,13 +28,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
         <EditText
             android:id="@+id/editTextTextPersonName7"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name7"
@@ -42,13 +43,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName6"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6" />
 
         <EditText
             android:id="@+id/editTextTextPersonName8"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name8"
@@ -57,13 +58,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName7"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName7"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
 
         <EditText
             android:id="@+id/editTextTextPersonName9"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name9"
@@ -72,13 +73,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName8"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName8"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8" />
 
         <EditText
             android:id="@+id/editTextTextPersonName10"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name10"
@@ -87,13 +88,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName9"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName9"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
 
         <EditText
             android:id="@+id/editTextTextPersonName4"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name4"
@@ -102,13 +103,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
 
         <EditText
             android:id="@+id/editTextTextPersonName5"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name5"
@@ -117,14 +118,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4" />
 
         <TextView
             android:id="@+id/textView"
-            android:layout_width="296dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="120dp"
+            android:layout_width="313dp"
+            android:layout_height="53dp"
+            android:layout_marginEnd="96dp"
             android:fontFamily="@font/roboto_condensed_bold"
             android:text="@string/instructors"
             android:textAlignment="center"
@@ -133,43 +133,45 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.06" />
+            app:layout_constraintVertical_bias="0.057" />
 
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="296dp"
-            android:layout_height="36dp"
-            android:layout_marginEnd="112dp"
+            android:layout_width="295dp"
+            android:layout_height="65dp"
+            android:layout_marginEnd="96dp"
             android:fontFamily="@font/roboto_condensed_bold"
             android:text="@string/students"
             android:textAlignment="center"
             android:textSize="34sp"
             android:typeface="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:layout_editor_absoluteY="373dp" />
 
         <EditText
             android:id="@+id/editTextTextPersonName"
-            android:layout_width="130dp"
-            android:layout_height="28dp"
-            android:layout_marginTop="32dp"
+            android:layout_width="133dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="20dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name1"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintHorizontal_bias="0.287"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView"
-            tools:ignore="TouchTargetSizeCheck"
-            android:autofillHints="" />
+            tools:ignore="TouchTargetSizeCheck" />
 
         <EditText
             android:id="@+id/editTextTextPersonName2"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name2"
@@ -178,13 +180,13 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
         <EditText
             android:id="@+id/editTextTextPersonName3"
             android:layout_width="129dp"
             android:layout_height="48dp"
+            android:autofillHints=""
             android:ems="10"
             android:inputType="textPersonName"
             android:text="@string/name3"
@@ -193,13 +195,12 @@
             app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
             app:layout_constraintHorizontal_bias="0.283"
             app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
-            android:autofillHints="" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="73dp"
-            android:layout_height="25dp"
+            android:layout_width="94dp"
+            android:layout_height="43dp"
             android:layout_marginBottom="16dp"
             android:text="@string/submit"
             android:textSize="20sp"
