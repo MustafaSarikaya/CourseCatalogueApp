@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1096545543213",
+    "project_id": "course-catalogue-app",
+    "storage_bucket": "course-catalogue-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1096545543213:android:dbb72e07efb389ca0384a4",
+        "android_client_info": {
+          "package_name": "com.example.coursecatalogueapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1096545543213-q6lq242k7f32b8te7uk3s8248olugrp7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOpKBoqGWhsqsgN-DAVDJKjc3zV_BZeek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1096545543213-q6lq242k7f32b8te7uk3s8248olugrp7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
