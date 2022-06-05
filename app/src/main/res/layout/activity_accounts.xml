@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:fillViewport="true"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:content="com.example.android.coursecatalogueapp.AdminMainActivity">
+
+        <EditText
+            android:id="@+id/editTextTextPersonName6"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name6"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName7"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name7"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName6"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName6"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName8"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name8"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName7"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName7"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName9"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name9"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName8"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName8"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName8"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName10"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name10"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName9"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName9"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName4"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name4"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName3"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName3"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName5"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name5"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName4"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName4"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
+            android:autofillHints="" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="296dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="120dp"
+            android:fontFamily="@font/roboto_condensed_bold"
+            android:text="@string/instructors"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:typeface="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="296dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="112dp"
+            android:fontFamily="@font/roboto_condensed_bold"
+            android:text="@string/students"
+            android:textAlignment="center"
+            android:textSize="34sp"
+            android:typeface="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName"
+            android:layout_width="130dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="32dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name1"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            tools:ignore="TouchTargetSizeCheck"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName2"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name2"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName"
+            android:autofillHints="" />
+
+        <EditText
+            android:id="@+id/editTextTextPersonName3"
+            android:layout_width="129dp"
+            android:layout_height="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name3"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName2"
+            app:layout_constraintHorizontal_bias="0.283"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName2"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+            android:autofillHints="" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="73dp"
+            android:layout_height="25dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/submit"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/editTextTextPersonName10"
+            app:layout_constraintStart_toStartOf="@+id/editTextTextPersonName10"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName10" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
