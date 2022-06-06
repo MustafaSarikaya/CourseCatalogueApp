@@ -13,15 +13,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseCatalogueApp"
         tools:targetApi="31">
-        <activity android:name=".AdminMainActivity"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity
+            android:name=".AdminMainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
-        <activity android:name=".InstructorsListActivity"></activity>
+        <activity android:name=".InstructorsListActivity"/>
+
+        <activity android:name=".StudentListActivity"/>
     </application>
 
 </manifest>

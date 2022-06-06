@@ -23,6 +23,7 @@ public class AdminMainActivity extends Activity {
         studentsButton = (Button)findViewById(R.id.Students);
 
         studentsButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminMainActivity.this, StudentListActivity.class);
@@ -40,8 +41,5 @@ public class AdminMainActivity extends Activity {
         });
 
     }
-
-
-
 
 }

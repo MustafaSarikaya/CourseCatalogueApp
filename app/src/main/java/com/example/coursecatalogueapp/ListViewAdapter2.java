@@ -14,25 +14,23 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 
-class ListViewAdapter extends ArrayAdapter<String> {
+class ListViewAdapter2 extends ArrayAdapter<String> {
     ArrayList<String> list;
     Context context;
-
-    public ListViewAdapter(Context context,ArrayList<String>names){
-        super(context,R.layout.list_row, names);
+    public ListViewAdapter2(Context context,ArrayList<String>studentnames){
+        super(context,R.layout.list_row, studentnames);
         this.context=context;
-        list=names;
+        list=studentnames;
     }
-
     @NonNull
     @Override
-    public  View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if(convertView == null){
             LayoutInflater layoutInflater =(LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
             convertView = layoutInflater.inflate(R.layout.list_row, null);
 
             TextView number = convertView.findViewById(R.id.number);
-            number.setText(position + 1+ ".");
+            number.setText(position + 1 + ".");
             TextView name = convertView.findViewById(R.id.name);
             name.setText(list.get(position));
 
@@ -42,14 +40,14 @@ class ListViewAdapter extends ArrayAdapter<String> {
             duplicate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    InstructorsListActivity.addName(list.get(position));
+                    StudentListActivity.addName(list.get(position));
 
                 }
             });
             remove.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    InstructorsListActivity.removeName(position);
+                    StudentListActivity.removeName(position);
 
 
                 }
@@ -60,3 +58,5 @@ class ListViewAdapter extends ArrayAdapter<String> {
         return convertView;
     }
 }
+
+
