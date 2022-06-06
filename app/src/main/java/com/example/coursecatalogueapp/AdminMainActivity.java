@@ -8,8 +8,9 @@ import android.widget.Button;
 
 public class AdminMainActivity extends Activity {
 
-    private Button accountsButton;
+    private Button instructorsButton;
     private Button Courses;
+    private Button studentsButton;
 
 
 
@@ -17,14 +18,23 @@ public class AdminMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adminmainpage);
 
-        accountsButton = (Button)findViewById(R.id.Accounts);
+        instructorsButton = (Button)findViewById(R.id.instructors);
         Courses = (Button)findViewById(R.id.Courses);
+        studentsButton = (Button)findViewById(R.id.Students);
 
-        accountsButton.setOnClickListener(new View.OnClickListener() {
+        studentsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AdminMainActivity.this, StudentListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        instructorsButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminMainActivity.this, Accounts.class);
+                Intent intent = new Intent(AdminMainActivity.this, InstructorsListActivity.class);
                 startActivity(intent);
             }
         });

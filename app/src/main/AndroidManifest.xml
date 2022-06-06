@@ -21,7 +21,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name="Accounts"></activity>
+        <activity android:name=".InstructorsListActivity"></activity>
     </application>
 
 </manifest>
