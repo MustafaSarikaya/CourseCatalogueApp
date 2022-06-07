@@ -74,4 +74,25 @@ public class Administrator extends User {
         }
         throw new NoSuchElementException("cannot find this course!");
     }
+
+    public Course searchCourseByName(String courseName){
+        for (ListIterator<Course> iter = courseList.listIterator(); iter.hasNext(); ) {
+            if (iter.next().getCourseName() == courseName) {
+                return iter.next();
+            }
+        }
+        throw new NoSuchElementException("cannot find this course!");
+    }
+
+    public LinkedList<Course> getCourseList(){
+        return courseList;
+    }
+
+//    public LinkedList<Student> getStudentList(){//private info, may need modify
+//        return studentList;
+//    }
+//
+//    public LinkedList<Instructor> getInstructorList(){
+//        return InstructorList;
+//    }
 }
