@@ -1,5 +1,3 @@
-package projcet;
-
 public class Course {
 
     private String courseCode, courseName, courseInfo;
