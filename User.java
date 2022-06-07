@@ -1,5 +1,3 @@
-package projcet;
-
 public abstract class User {
 
     private String firstName, lastName, emailAddress, passWord;
