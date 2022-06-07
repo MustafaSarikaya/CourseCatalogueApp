@@ -3,6 +3,9 @@ package com.example.coursecatalogueapp;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,8 +21,11 @@ public class LogInActivity extends Activity {
     private static final String TAG = "Login";
 
     private FirebaseAuth mAuth;
-    private String email;
+    private String username;
     private String password;
+
+    EditText inputUsername, inputPassword;
+    Button loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,24 @@ public class LogInActivity extends Activity {
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
 
+        inputUsername = findViewById(R.id.inputUsername);
+        inputPassword = findViewById(R.id.inputPassword);
+        loginButton = findViewById(R.id.login);
+
+        setLoginClickListener();
+    }
+
+    private void setLoginClickListener() {
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                username = inputUsername.getText().toString() + "@gmail.com";
+                password = inputPassword.getText().toString();
+                signIn(username,password);
+                // TODO add Role check functionality when the admin, instructor, student classes created
+                // TODO Create an intent to navigate to the appropriate page (student, instructor, admin)
+            }
+        });
     }
 
     @Override
