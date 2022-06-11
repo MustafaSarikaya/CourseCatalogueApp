@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.coursecatalogueapp">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_CONTACTS"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -25,6 +28,8 @@
         <activity android:name=".InstructorsListActivity"/>
 
         <activity android:name=".StudentListActivity"/>
+        <activity android:name=".InstructorAdd"
+            android:parentActivityName=".InstructorsListActivity"/>
     </application>
 
 </manifest>

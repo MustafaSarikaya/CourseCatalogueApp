@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -34,13 +35,14 @@ class ListViewAdapter2 extends ArrayAdapter<String> {
             TextView name = convertView.findViewById(R.id.name);
             name.setText(list.get(position));
 
-            ImageView duplicate = convertView.findViewById(R.id.copy);
+            ImageView duplicate = convertView.findViewById(R.id.update);
             ImageView remove = convertView.findViewById(R.id.remove);
 
             duplicate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    StudentListActivity.addName(list.get(position));
+                  // StudentListActivity.addName(list.get(position));
+                    Toast.makeText(context, "Name Duplicated", Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -48,6 +50,7 @@ class ListViewAdapter2 extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View v) {
                     StudentListActivity.removeName(position);
+                    Toast.makeText(context, " Name Removed" , Toast.LENGTH_SHORT).show();
 
 
                 }

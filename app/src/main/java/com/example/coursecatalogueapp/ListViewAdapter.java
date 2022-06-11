@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,13 +16,14 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 
 class ListViewAdapter extends ArrayAdapter<String> {
+    private static final String KEY_NAME = null ;
     ArrayList<String> list;
     Context context;
-
     public ListViewAdapter(Context context,ArrayList<String>names){
         super(context,R.layout.list_row, names);
         this.context=context;
         list=names;
+
     }
 
     @NonNull
@@ -36,13 +38,14 @@ class ListViewAdapter extends ArrayAdapter<String> {
             TextView name = convertView.findViewById(R.id.name);
             name.setText(list.get(position));
 
-            ImageView duplicate = convertView.findViewById(R.id.copy);
+            ImageView duplicate = convertView.findViewById(R.id.update);
             ImageView remove = convertView.findViewById(R.id.remove);
 
             duplicate.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    InstructorsListActivity.addName(list.get(position));
+
+                    Toast.makeText(context, "Name Edited", Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -50,7 +53,7 @@ class ListViewAdapter extends ArrayAdapter<String> {
                 @Override
                 public void onClick(View v) {
                     InstructorsListActivity.removeName(position);
-
+                    Toast.makeText(context, " Name Removed" , Toast.LENGTH_SHORT).show();
 
                 }
             });
@@ -59,4 +62,7 @@ class ListViewAdapter extends ArrayAdapter<String> {
         }
         return convertView;
     }
+
+
 }
+

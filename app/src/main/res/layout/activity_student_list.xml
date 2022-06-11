@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
+    android:layout_height="match_parent"
+    >
     <RelativeLayout
         android:id="@+id/header"
         android:layout_width="match_parent"
@@ -22,7 +22,8 @@
             android:layout_centerInParent="true"
             android:ems="10"
             android:hint="Add Student here"
-            android:minHeight="48dp" />
+            android:minHeight="48dp"
+            />
 
         <ImageView
             android:id="@+id/add"
@@ -36,18 +37,38 @@
             android:layout_toRightOf="@+id/input"
             android:src="@drawable/add_instructor" />
 
+        <ImageView
+            android:id="@+id/Home"
+            android:layout_width="25sp"
+            android:layout_height="25sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="40dp"
+            android:src="@drawable/ic_home" />
+
+        <ImageView
+            android:id="@+id/Add_btn"
+            android:layout_width="30sp"
+            android:layout_height="30sp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="370dp"
+            android:layout_marginTop="33dp"
+            android:src="@drawable/ic_add" />
+
+
     </RelativeLayout>
 
+
     <ListView
-        android:id="@+id/listview"
+        android:id="@+id/listView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="98dp"
-        android:layout_marginEnd="-5dp"
-        android:layout_marginBottom="-44dp" />
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="102dp" />
+
+
 </RelativeLayout>
