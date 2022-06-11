@@ -41,7 +41,7 @@
             android:hint="@string/enter_your_name"
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:textColorHint="#78909C" />
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/userNameText"
@@ -90,7 +90,7 @@
             android:hint="@string/enter_your_password"
             android:inputType="textPassword"
             android:minHeight="48dp"
-            android:textColorHint="#78909C" />
+            tools:ignore="TextContrastCheck" />
 
         <TextView
             android:id="@+id/roleSpinnerText"
@@ -119,7 +119,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="16dp"
-            android:layout_marginBottom="64dp"
+            android:layout_marginBottom="8dp"
             android:enabled="true"
             android:text="@string/register_activity_title"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -127,6 +127,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputPassword"
             app:layout_constraintVertical_bias="0.2" />
+
+        <TextView
+            android:id="@+id/loginLink"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/or_login_instead"
+            android:textAlignment="center"
+            android:textColor="@color/teal_200"
+            tools:ignore="TextContrastCheck" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -31,4 +31,8 @@
     <string name="name">Name</string>
     <string name="update_info">Update Info</string>
     <string name="update">UPDATE</string>
+    <string name="register_here_if_you_don_t_have_an_account"><u>Register here if you don\'t have an account</u></string>
+    <string name="or_login_instead"><u>Or Login instead</u></string>
+    <string name="email">Email</string>
+    <string name="register_activity_title">Register</string>
 </resources>
