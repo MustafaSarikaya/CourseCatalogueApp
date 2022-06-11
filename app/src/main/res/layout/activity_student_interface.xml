@@ -32,7 +32,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/Header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -44,13 +44,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
     <ListView
+        android:id="@+id/CourseListView"
         android:layout_width="350dp"
         android:layout_height="300dp"
         android:layout_marginTop="8dp"
         android:background="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/Header" />
 
     <Button
         android:id="@+id/button3"
@@ -60,6 +61,6 @@
         android:layout_marginTop="32dp"
         android:text="Enroll another course"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/_dynamic" />
+        app:layout_constraintTop_toBottomOf="@id/CourseListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

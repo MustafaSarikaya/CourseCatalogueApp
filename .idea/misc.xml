@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout-w1240dp/activity_manage_course.xml" value="0.11546184738955824" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout-w1240dp/activity_student_interface.xml" value="0.11655405405405406" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout-w936dp/activity_login.xml" value="0.1" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_admin_course.xml" value="0.13134057971014493" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_login.xml" value="0.13134057971014493" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_manage_course.xml" value="0.1" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_student_interface.xml" value="0.13134057971014493" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2055" />
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.1" />
