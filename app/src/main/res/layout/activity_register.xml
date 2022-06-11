@@ -135,7 +135,8 @@
             android:text="@string/or_login_instead"
             android:textAlignment="center"
             android:textColor="@color/teal_200"
-            tools:ignore="TextContrastCheck" />
+            tools:ignore="TextContrastCheck"
+            android:onClick="onLinkClick"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

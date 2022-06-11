@@ -1,12 +1,14 @@
 package com.example.coursecatalogueapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ public class RegisterActivity extends Activity {
 
     private static final String TAG = "Register";
 
+    //Declare variables
     private FirebaseAuth mAuth;
     private String email;
     private String password;
@@ -30,9 +33,12 @@ public class RegisterActivity extends Activity {
     private String userRole;
     private DatabaseReference mDatabase;
 
+    //Declare UI elements
     EditText inputEmail, inputPassword, inputFullname;
     Spinner spinnerRoles;
     Button registerButton;
+    TextView loginLink;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +49,14 @@ public class RegisterActivity extends Activity {
         mAuth = FirebaseAuth.getInstance();
         mDatabase = FirebaseDatabase.getInstance().getReference();
 
+        //Initialize UI elements
         inputEmail = findViewById(R.id.usernameInput);
         inputPassword = findViewById(R.id.passwordInput);
         inputFullname = findViewById(R.id.fullNameInput);
         spinnerRoles = findViewById(R.id.roleSpinnerInput);
         registerButton = findViewById(R.id.registerBtn);
+        loginLink = findViewById(R.id.loginLink);
+
 
         setRegisterClickListener();
     }
@@ -56,15 +65,23 @@ public class RegisterActivity extends Activity {
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //get the submitted form data
                 email = inputEmail.getText().toString();
                 password = inputPassword.getText().toString();
                 fullName = inputFullname.getText().toString();
                 userRole = spinnerRoles.getSelectedItem().toString();
+
                 createAccount(email,password);
                 // TODO add Role check functionality when the admin, instructor, student classes created
                 // TODO Create an intent to navigate to the appropriate page (student, instructor, admin)
             }
         });
+    }
+
+    //loginLink click
+    public void onLinkClick(View view) {
+        Intent i = new Intent(RegisterActivity.this, LogInActivity.class);
+        startActivity(i);
     }
 
     @Override
@@ -86,6 +103,8 @@ public class RegisterActivity extends Activity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+
+                            //check user role before adding them to appropriate firebase table
                             if (userRole.equals("instructor")) {
                                 mDatabase.child("instructors").child(user.getUid()).child("fullName").setValue(fullName);
                             } else if (userRole.equals("student")){
@@ -106,7 +125,5 @@ public class RegisterActivity extends Activity {
 
     private void reload() { }
 
-    private void updateUI(FirebaseUser user) {
-
-    }
+    private void updateUI(FirebaseUser user) { }
 }
