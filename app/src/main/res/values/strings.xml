@@ -31,4 +31,20 @@
     <string name="name">Name</string>
     <string name="update_info">Update Info</string>
     <string name="update">UPDATE</string>
+    <string name="register_here_if_you_don_t_have_an_account"><u>Register here if you don\'t have an account</u></string>
+    <string name="or_login_instead"><u>Or Login instead</u></string>
+    <string name="email">Email</string>
+    <string name="register_activity_title">Register</string>
+    <string name="are_you_a_student_or_an_instructor">Are you a student or an instructor?</string>
+    <string name="enter_your_password">Enter password</string>
+    <string name="password">Password</string>
+    <string name="enter_email">Enter email</string>
+    <string name="enter_your_name">Enter Full Name</string>
+    <string name="full_name">Full Name</string>
+    <string-array name="user_type">
+        <item>Select</item>
+        <item>Instructor</item>
+        <item>Student</item>
+    </string-array>
+
 </resources>

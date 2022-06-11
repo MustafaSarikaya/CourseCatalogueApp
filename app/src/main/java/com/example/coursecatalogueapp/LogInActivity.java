@@ -1,11 +1,13 @@
 package com.example.coursecatalogueapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,6 +27,7 @@ public class LogInActivity extends Activity {
     private String password;
 
     EditText inputUsername, inputPassword;
+    TextView registerLink;
     Button loginButton;
 
     @Override
@@ -38,6 +41,7 @@ public class LogInActivity extends Activity {
         inputUsername = findViewById(R.id.inputUsername);
         inputPassword = findViewById(R.id.inputPassword);
         loginButton = findViewById(R.id.login);
+        registerLink = findViewById(R.id.registerLink);
 
         setLoginClickListener();
     }
@@ -53,6 +57,12 @@ public class LogInActivity extends Activity {
                 // TODO Create an intent to navigate to the appropriate page (student, instructor, admin)
             }
         });
+    }
+
+    //registerLink click
+    public void onLinkClick(View view) {
+        Intent i = new Intent(LogInActivity.this, RegisterActivity.class);
+        startActivity(i);
     }
 
     @Override
@@ -78,7 +88,7 @@ public class LogInActivity extends Activity {
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
-                            Toast.makeText(LogInActivity.this, "Authentication failed.",
+                            Toast.makeText(LogInActivity.this, task.getException().getMessage(),
                                     Toast.LENGTH_SHORT).show();
                             updateUI(null);
                         }
@@ -91,4 +101,6 @@ public class LogInActivity extends Activity {
     private void updateUI(FirebaseUser user) {
 
     }
+
+
 }
