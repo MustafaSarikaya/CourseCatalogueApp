@@ -26,7 +26,7 @@ public class RegisterActivity extends Activity {
     private FirebaseAuth mAuth;
     private String email;
     private String password;
-    private String fullname;
+    private String fullName;
     private String userRole;
     private DatabaseReference mDatabase;
 
@@ -58,7 +58,7 @@ public class RegisterActivity extends Activity {
             public void onClick(View v) {
                 email = inputEmail.getText().toString();
                 password = inputPassword.getText().toString();
-                fullname = inputFullname.getText().toString();
+                fullName = inputFullname.getText().toString();
                 userRole = spinnerRoles.getSelectedItem().toString();
                 createAccount(email,password);
                 // TODO add Role check functionality when the admin, instructor, student classes created
@@ -86,7 +86,11 @@ public class RegisterActivity extends Activity {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            userRole == "instructor" ?
+                            if (userRole.equals("instructor")) {
+                                mDatabase.child("instructors").child(user.getUid()).child("fullName").setValue(fullName);
+                            } else if (userRole.equals("student")){
+                                mDatabase.child("students").child(user.getUid()).child("fullName").setValue(fullName);
+                            }
                             updateUI(user);
                         } else {
                             // If sign in fails, display a message to the user.
