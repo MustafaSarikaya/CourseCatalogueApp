@@ -1,3 +1,5 @@
+package com.example.coursecatalogueapp.modules;
+
 public class Course {
 
     private String courseCode, courseName, courseInfo;
