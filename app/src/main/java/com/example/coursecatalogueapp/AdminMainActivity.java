@@ -26,7 +26,8 @@ public class AdminMainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminMainActivity.this, StudentListActivity.class);
+                Intent intent = new Intent(AdminMainActivity.this, AdminUserListActivity.class);
+                intent.putExtra("TAG","Student");
                 startActivity(intent);
             }
         });
@@ -35,7 +36,8 @@ public class AdminMainActivity extends Activity {
 
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminMainActivity.this, InstructorsListActivity.class);
+                Intent intent = new Intent(AdminMainActivity.this, AdminUserListActivity.class);
+                intent.putExtra("TAG","Instructor");
                 startActivity(intent);
             }
         });

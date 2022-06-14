@@ -46,6 +46,10 @@
     <string name="user_role_key">user_role</string>
     <string name="user_uid_key">user_uid</string>
     <string name="addInstructor">Add Instructor</string>
+    <string name="delete_button">delete button</string>
+    <string name="edit_button">edit button</string>
+    <string name="home_icon">home icon</string>
+    <string name="add_icon">add icon</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>

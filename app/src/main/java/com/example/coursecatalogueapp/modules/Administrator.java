@@ -49,10 +49,10 @@ public class Administrator extends User {
 //        }
 //    }
 
-    public Course creatCourse(String courseCode, String courseName) {
-        Course result = new Course(courseCode, courseName);
-        return result;
-    }
+//    public Course creatCourse(String courseCode, String courseName) {
+//        Course result = new Course(courseCode, courseName);
+//        return result;
+//    }
 
     public void addCourse(Course course) {
         courseList.add(course);
