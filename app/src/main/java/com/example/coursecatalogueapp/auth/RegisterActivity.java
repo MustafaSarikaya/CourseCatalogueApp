@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.auth;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.UserController;
 import com.example.coursecatalogueapp.Utils.Function;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -121,6 +123,7 @@ public class RegisterActivity extends Activity {
                     //set the new task and clear flags, so that the user can't go back here
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
+                    return;
                 } else {
                     back(view);
                 }

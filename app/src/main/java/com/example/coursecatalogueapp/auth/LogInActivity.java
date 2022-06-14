@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.auth;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,14 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
+import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.UserController;
 import com.example.coursecatalogueapp.Utils.Function;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.BaseTransientBottomBar;
-import com.google.android.material.snackbar.Snackbar;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;

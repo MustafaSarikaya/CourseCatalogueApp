@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 
 import com.example.coursecatalogueapp.Utils.Function;
+import com.example.coursecatalogueapp.Utils.Utils;
 import com.example.coursecatalogueapp.modules.Administrator;
 import com.example.coursecatalogueapp.modules.Instructor;
 import com.example.coursecatalogueapp.modules.Student;
@@ -181,7 +182,7 @@ public class UserController {
                     @Override
                     public void onSuccess(Void aVoid) {
                         switch(role) {
-                            case "instructor":
+                            case "Instructor":
                                 setUserAccount(new Instructor(name, email, auth.getCurrentUser().getUid()));
                                 break;
                             case "Student":
@@ -189,7 +190,7 @@ public class UserController {
                                 break;
                             default:
                                 //This really shouldn't happen
-//                                Utils.showSnackbar("Invalid role! This should never happen.", view);
+                                Utils.showSnackbar("Invalid role! This should never happen.", view);
                                 break;
                         }
                         onSuccess.f(name, email, role, auth.getCurrentUser().getUid());
@@ -199,7 +200,7 @@ public class UserController {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         //Show failed error
-//                        Utils.showSnackbar("Failed to add user to database.", view);
+                        Utils.showSnackbar("Failed to add user to database.", view);
                         //Tries to delete current user so that user can try to create new account again.
                         auth.getCurrentUser().delete();
                     }

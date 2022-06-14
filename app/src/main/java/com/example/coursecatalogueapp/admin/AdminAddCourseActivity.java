@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.admin;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.Utils.Function;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.auth.FirebaseAuth;
