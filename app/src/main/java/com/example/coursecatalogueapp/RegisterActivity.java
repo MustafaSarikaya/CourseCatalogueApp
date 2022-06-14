@@ -12,7 +12,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.coursecatalogueapp.Utils.Function;
-import com.example.coursecatalogueapp.modules.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -33,13 +32,16 @@ public class RegisterActivity extends Activity {
     EditText inputEmail, inputPassword, inputFullname;
     Spinner spinnerRoles;
     Button registerButton;
-    TextView loginLink;
+    TextView loginLink, spinnerText, pageTitle;
+
+    Intent i;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
@@ -51,8 +53,20 @@ public class RegisterActivity extends Activity {
         inputFullname = findViewById(R.id.fullNameInput);
         spinnerRoles = findViewById(R.id.roleSpinnerInput);
         registerButton = findViewById(R.id.registerBtn);
+        spinnerText = findViewById(R.id.roleSpinnerText);
+        pageTitle = findViewById(R.id.registerTitle);
         loginLink = findViewById(R.id.loginLink);
-
+        i = getIntent();
+        if (i != null) {
+            userRole = i.getStringExtra("TAG");
+            spinnerRoles.setVisibility(View.INVISIBLE);
+            loginLink.setVisibility(View.INVISIBLE);
+            spinnerText.setVisibility(View.INVISIBLE);
+            registerButton.setText(R.string.add);
+            pageTitle.setText(userRole.equals("Instructor") ?
+                    R.string.addInstructor :
+                    R.string.addStudent);
+        }
 
         setRegisterClickListener();
     }
@@ -103,10 +117,17 @@ public class RegisterActivity extends Activity {
             public void f(Object... params) {
                 writeToSharedPrefs(params);
 
-                //Navigate to Main Activity when successful
-                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
-                //set the new task and clear flags, so that the user can't go back here
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Intent intent;
+                if (i == null) {
+                    intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    //set the new task and clear flags, so that the user can't go back here
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                }
+                else if (i.getStringExtra("TAG").equals("Instructor")) {
+                    intent = new Intent(RegisterActivity.this, InstructorsListActivity.class);
+                } else {
+                    intent = new Intent(RegisterActivity.this, StudentListActivity.class);
+                }
                 startActivity(intent);
             }
         });

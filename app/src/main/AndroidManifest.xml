@@ -27,8 +27,6 @@
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".InstructorsListActivity"/>
         <activity android:name=".StudentListActivity"/>
-        <activity android:name=".InstructorAdd"
-            android:parentActivityName=".InstructorsListActivity"/>
         <activity android:name=".AdminMainActivity"/>
         <activity android:name=".ManageCourse"/>
         <activity android:name=".StudentInterface"/>

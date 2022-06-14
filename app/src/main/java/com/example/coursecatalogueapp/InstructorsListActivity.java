@@ -15,22 +15,26 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.coursecatalogueapp.modules.Instructor;
+import com.example.coursecatalogueapp.modules.User;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class InstructorsListActivity extends AppCompatActivity {
 
     static ListView listView;
-    static ArrayList<Instructor> names =new ArrayList<>();;
+    static ArrayList<String> names;
     static ListViewAdapter adapter;
     EditText input;
     ImageView enter;
@@ -44,8 +48,10 @@ public class InstructorsListActivity extends AppCompatActivity {
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
 
-
-
+    List<User> instructor;
+    LinearLayout employeesList;
+    private FirebaseFirestore firestore;
+    private CollectionReference usersReference;
 
 
     @Override
@@ -76,12 +82,12 @@ public class InstructorsListActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Instructor name = names.get(position);
+                String name = names.get(position);
 
 
                 viewCard();
-                isim2.setText(name.getFullName());
-                // String name = names.get(position);
+                isim2.setText(name);
+               // String name = names.get(position);
                 //makeToast(name);
             }
         });
@@ -94,12 +100,8 @@ public class InstructorsListActivity extends AppCompatActivity {
                 return false;
             }
         });
-        ArrayList<String> names2 = new ArrayList<>();
-        for (Instructor i: names ){
-            names2.add(i.getFullName());
-        }
 
-        adapter = new ListViewAdapter(getApplicationContext(),names2);
+        adapter = new ListViewAdapter(getApplicationContext(),names);
         listView.setAdapter(adapter);
 
         enter.setOnClickListener(new View.OnClickListener() {
@@ -130,8 +132,8 @@ public class InstructorsListActivity extends AppCompatActivity {
         PlusButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(InstructorsListActivity.this,InstructorAdd.class);
-                // intent.putExtra("TAG","instructorlistpage");
+                Intent intent = new Intent(InstructorsListActivity.this,RegisterActivity.class);
+                intent.putExtra("TAG","Instructor");
                 startActivity(intent);
             }
         });
@@ -143,38 +145,38 @@ public class InstructorsListActivity extends AppCompatActivity {
 
         loadcontent();
 
-        // File path = getApplicationContext().getFilesDir();
-        // File readFrom = new File(path,"list.txt");
+       // File path = getApplicationContext().getFilesDir();
+       // File readFrom = new File(path,"list.txt");
         //byte[] content = new byte[(int) readFrom.length()];
 
-        //   Bundle ReceiveName = getIntent().getExtras();
+     //   Bundle ReceiveName = getIntent().getExtras();
 
-        //   if(ReceiveName != null){
-        //   String nam= ReceiveName.getString("name");
-        // names.add(nam);
-    }
+     //   if(ReceiveName != null){
+         //   String nam= ReceiveName.getString("name");
+           // names.add(nam);
+        }
 
-    // popup
-    public void viewCard(){
-        dialogBuilder = new AlertDialog.Builder(this);
-        final View popupWindow = getLayoutInflater().inflate(R.layout.popup,null);
-        isim2 = (TextView) popupWindow.findViewById(R.id.isim);
-        numara2 = (TextView) popupWindow.findViewById(R.id.numara);
-        email2= (TextView) popupWindow.findViewById(R.id.email);
-        ok_pop2 = (Button)popupWindow.findViewById(R.id.ok_pop);
+        // popup
+        public void viewCard(){
+            dialogBuilder = new AlertDialog.Builder(this);
+            final View popupWindow = getLayoutInflater().inflate(R.layout.popup,null);
+            isim2 = (TextView) popupWindow.findViewById(R.id.isim);
+            numara2 = (TextView) popupWindow.findViewById(R.id.numara);
+            email2= (TextView) popupWindow.findViewById(R.id.email);
+            ok_pop2 = (Button)popupWindow.findViewById(R.id.ok_pop);
 
 
 
-        dialogBuilder.setView(popupWindow);
-        dialog = dialogBuilder.create();
-        dialog.show();
+            dialogBuilder.setView(popupWindow);
+            dialog = dialogBuilder.create();
+            dialog.show();
 
-        ok_pop2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+            ok_pop2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                }
+            });
 
 
 
@@ -237,8 +239,8 @@ public class InstructorsListActivity extends AppCompatActivity {
 
     }
     //add name
-    public static void addInstructor(String firstName, String lastName, String email, String password){
-        names.add(new Instructor(firstName,lastName,email,password));
+    public static void addName(String name){
+        names.add(name);
         listView.setAdapter(adapter);
     }
     Toast t;

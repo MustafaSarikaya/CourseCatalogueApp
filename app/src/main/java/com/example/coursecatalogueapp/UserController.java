@@ -98,10 +98,10 @@ public class UserController {
                         String r = (String) documentSnapshot.getData().get("role");
                         switch(r) {
                             case "instructor":
-//                                setUserAccount(new Instructor(n, email, auth.getCurrentUser().getUid()));
+                                setUserAccount(new Instructor(n, email, auth.getCurrentUser().getUid()));
                                 break;
                             case "student":
-//                                setUserAccount(new Student(n, email, auth.getCurrentUser().getUid()));
+                                setUserAccount(new Student(n, email, auth.getCurrentUser().getUid()));
                                 break;
                             default:
 //                                Utils.showSnackbar("Invalid data from database!", view);

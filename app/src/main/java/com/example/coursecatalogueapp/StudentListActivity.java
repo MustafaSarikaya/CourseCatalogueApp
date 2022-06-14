@@ -113,8 +113,8 @@ public class StudentListActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent intent = new Intent(StudentListActivity.this,InstructorAdd.class);
-                intent.putExtra("TAG","studentlistpage");
+                Intent intent = new Intent(StudentListActivity.this,RegisterActivity.class);
+                intent.putExtra("TAG","Student");
                 startActivity(intent);
             }
         });
