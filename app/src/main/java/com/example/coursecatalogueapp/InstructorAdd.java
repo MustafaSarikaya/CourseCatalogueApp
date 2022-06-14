@@ -1,5 +1,6 @@
 package com.example.coursecatalogueapp;
 
+import static com.example.coursecatalogueapp.InstructorsListActivity.addInstructor;
 import static com.example.coursecatalogueapp.InstructorsListActivity.names;
 
 import android.Manifest;
@@ -25,6 +26,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.coursecatalogueapp.modules.Instructor;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.lang.reflect.Type;
@@ -35,9 +37,10 @@ public class InstructorAdd extends AppCompatActivity {
 
 
     FloatingActionButton fabSave;
-    EditText name;
-    EditText number;
+    EditText firstName;
+    EditText lastName;
     EditText emailAddress;
+    EditText password;
 
 
     @Override
@@ -46,9 +49,11 @@ public class InstructorAdd extends AppCompatActivity {
         setContentView(R.layout.instructor_add);
 
         fabSave = findViewById(R.id.fabSave);
-        name = findViewById(R.id.Name);
-        number = findViewById(R.id.Number);
-        emailAddress = findViewById(R.id.EmailAddress);
+        firstName = findViewById(R.id.IAFirstName);
+        lastName = findViewById(R.id.IALastName);
+        emailAddress = findViewById(R.id.IAEmailAddress);
+        password = findViewById(R.id.IAPassword);
+
 
 
 
@@ -57,33 +62,27 @@ public class InstructorAdd extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String text1 = name.getText().toString();
+                String txtFirstName = firstName.getText().toString();
+                String txtLastName = lastName.getText().toString();
+                String txtEmailAddress = emailAddress.getText().toString();
+                String txtPassword = password.getText().toString();
                 Bundle extras=getIntent().getExtras();
                 if(extras ==null) {
-                   // String value = extras.getString("TAG");
+                    // String value = extras.getString("TAG");
 
 
                     Intent intent = new Intent(v.getContext(), InstructorsListActivity.class);
-                    intent.putExtra("name", text1);
+                    intent.putExtra("name", txtFirstName);
+                    addInstructor(txtFirstName,txtLastName,txtEmailAddress,txtPassword);
                     startActivity(intent);
 
                 }else{
                     Intent intent = new Intent(v.getContext(), StudentListActivity.class);
-                    intent.putExtra("name", text1);
+                    intent.putExtra("name", txtFirstName);
+                    addInstructor(txtFirstName,txtLastName,txtEmailAddress,txtPassword);
                     startActivity(intent);
-                    }
-
                 }
-
-
+            }
         });
-
-
-
-
     }
-
 }
-
-
-
