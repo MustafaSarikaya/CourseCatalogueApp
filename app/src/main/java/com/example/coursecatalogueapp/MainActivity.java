@@ -58,9 +58,9 @@ public class MainActivity extends AppCompatActivity {
             case "admin":
                 intent = new Intent(MainActivity.this, AdminMainActivity.class);
                 break;
-//            case "instructor":
-//                intent = new Intent(MainActivity.this, InstructorActivity.class);
-//                break;
+            case "Instructor":
+                intent = new Intent(MainActivity.this, InstructorsActivity.class);
+                break;
             case "Student":
                 intent = new Intent(MainActivity.this, StudentInterface.class);
                 break;

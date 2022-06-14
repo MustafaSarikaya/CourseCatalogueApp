@@ -17,20 +17,18 @@
         android:theme="@style/Theme.CourseCatalogueApp"
         tools:targetApi="31">
         <activity android:name=".LogInActivity"
-        android:exported="true"/>
+        android:exported="true">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
 
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".AdminUserListActivity"/>
         <activity android:name=".AdminAddCourseActivity"/>
         <activity android:name=".AdminMainActivity"/>
-        <activity android:name=".ManageCourse"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <activity android:name=".ManageCourse"/>
         <activity android:name=".StudentInterface"/>
         <activity android:name=".MainActivity"/>
 
