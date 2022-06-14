@@ -42,7 +42,7 @@ public class ManageCourse extends AppCompatActivity {
 //    private AlertDialog dialog;
 
     List<Course> courses;
-    static private ListView courseList;
+    private ListView courseList;
     private FirebaseFirestore firestore;
     private CollectionReference courseReference;
 
@@ -59,12 +59,15 @@ public class ManageCourse extends AppCompatActivity {
         //Set up the employee and customer lists
         courses = new ArrayList<>();
 
-        courseList = findViewById(R.id.listview);
+        courseList = findViewById(R.id.listview); ////////////
         input= findViewById(R.id.input);
         enter= findViewById(R.id.add);
         HomeButton = findViewById(R.id.Home);
         addUserButton =findViewById(R.id.addUserButton);
 //        Update = findViewById(R.id.update);
+
+
+
 
 
 //        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -82,9 +85,9 @@ public class ManageCourse extends AppCompatActivity {
 
         courseList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id){
                 deleteCourse(courses.get(position));
-                return false;
+                return true;
             }
         });
 
