@@ -12,9 +12,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.example.coursecatalogueapp.Utils.Function;
+import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class AdminAddCourseActivity extends Activity {
@@ -25,27 +30,26 @@ public class AdminAddCourseActivity extends Activity {
     private String courseName;
     private String courseCode;
     private FirebaseFirestore db;
+    private CollectionReference coursesReference;
     //Declare UI elements
     EditText inputCourseName, inputCourseCode;
-    Spinner spinnerRoles;
     Button addButton;
-    TextView loginLink, spinnerText, pageTitle;
 
-    Intent i;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_admin_add_course);
 
         // Initialize Firebase
         db = FirebaseFirestore.getInstance();
+        coursesReference = db.collection("courses");
 
         //Initialize UI elements
-//        inputCourseName = findViewById(R.id.);
-//        inputCourseCode = findViewById(R.id.);
-//        addButton = findViewById(R.id.);
+        inputCourseName = findViewById(R.id.addCourseName);
+        inputCourseCode = findViewById(R.id.addCourseCode);
+        addButton = findViewById(R.id.addCourseBtn);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,6 +58,7 @@ public class AdminAddCourseActivity extends Activity {
                 courseName = inputCourseName.getText().toString();
                 courseCode = inputCourseCode.getText().toString();
 
+                createCourse(courseName,courseCode, getCurrentFocus());
             }
         });
     }
@@ -68,47 +73,20 @@ public class AdminAddCourseActivity extends Activity {
 //        }
 //    }
 
-    public void createAccount(
-            final String name,
-            final String email,
-            final String role,
-            final String password,
+    public void createCourse(
+            final String courseName,
+            final String courseCode,
             final View view
     ) {
-        // Create user on Firebase auth
-        UserController.getInstance().signUp(name, email, role, password, getCurrentFocus(), new Function() {
-            @Override
-            public void f(Object... params) {
-                writeToSharedPrefs(params);
+        //Create a map with the data to write to cloud firestore
+        Map<String, Object> courseInfo = new HashMap<>();
+        courseInfo.put("courseName", courseName);
+        courseInfo.put("courseCode", courseCode);
 
-                Intent intent;
-                if (i.getExtras() == null) {
-                    intent = new Intent(AdminAddCourseActivity.this, MainActivity.class);
-                    //set the new task and clear flags, so that the user can't go back here
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                } else {
-                    back(getCurrentFocus());
-                }
-            }
-        });
+        coursesReference.add(courseInfo);
+        back(view);
     }
 
-    private void writeToSharedPrefs(Object... params) {
-        Log.d("LOGIN DEBUG", "Writing data to shared preferences...");
-        //Writing data to shared preferences after everything has succeeded.
-        //Get shared preferences
-        SharedPreferences prefs = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
-        //Get the editor of the shared preferences
-        SharedPreferences.Editor editor = prefs.edit();
-        //Write login data to shared preferences
-        editor.putString(getString(R.string.user_name_key), (String) params[0]);
-        editor.putString(getString(R.string.user_email_key), (String) params[1]);
-        editor.putString(getString(R.string.user_role_key), (String) params[2]);
-        editor.putString(getString(R.string.user_uid_key), (String) params[3]);
-        //Apply shared preferences changes
-        editor.apply();
-    }
 
     private void reload() { }
 

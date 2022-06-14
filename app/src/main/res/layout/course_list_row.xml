@@ -37,7 +37,17 @@
             </LinearLayout>
 
             <ImageButton
-                android:id="@+id/imageButton"
+                android:id="@+id/courseEditBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="update icon"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+            <ImageButton
+                android:id="@+id/courseDeleteBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="0.1"
