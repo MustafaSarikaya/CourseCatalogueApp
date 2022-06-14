@@ -50,6 +50,7 @@
     <string name="edit_button">edit button</string>
     <string name="home_icon">home icon</string>
     <string name="add_icon">add icon</string>
+    <string name="delete">Delete</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>

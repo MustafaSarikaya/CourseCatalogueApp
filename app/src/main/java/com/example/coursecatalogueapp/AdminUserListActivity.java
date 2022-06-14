@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageSwitcher;
@@ -37,6 +38,7 @@ public class AdminUserListActivity extends AppCompatActivity {
 
     static AdminUserListAdapter adapter;
     EditText input;
+    Button btnDelete;
     ImageView enter, HomeButton, addUserButton, Update;
     String userRole;
     Intent intent;
@@ -69,8 +71,12 @@ public class AdminUserListActivity extends AppCompatActivity {
         input= findViewById(R.id.input);
         enter= findViewById(R.id.add);
         HomeButton = findViewById(R.id.Home);
+        btnDelete = findViewById(R.id.btnDelete);
         addUserButton =findViewById(R.id.addUserButton);
 //        Update = findViewById(R.id.update);
+
+
+
 
         intent = getIntent();
         if (intent.getExtras() != null) {
@@ -90,13 +96,30 @@ public class AdminUserListActivity extends AppCompatActivity {
 //            }
 //        });
 
-        userList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//        userList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                deleteUser(users.get(position));
+//                return false;
+//            }
+//        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                deleteUser(users.get(position));
-                return false;
+            public void onClick(View v) {
+                String name = input.getText().toString();
+
+                int index = -1;
+                for(int i = 0; i < users.size(); i++){
+                    if(users.get(i).getName().equals(name)){
+                        index = i;
+                    }
+                }
+
+                deleteUser(users.get(index));
             }
         });
+
 
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
