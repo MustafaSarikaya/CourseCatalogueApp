@@ -3,7 +3,6 @@ package com.example.coursecatalogueapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-//import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,9 +10,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-//import android.widget.Toast;
-
-import com.google.firebase.database.DatabaseReference;
 
 import java.util.ArrayList;
 
@@ -25,7 +21,6 @@ public class ManageCourse extends AppCompatActivity {
     ListView courseListView;
     ArrayList<String> courseList;
     ArrayAdapter adapter;
-    DatabaseReference mDatabase;
 
 
     @Override

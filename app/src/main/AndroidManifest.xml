@@ -32,6 +32,7 @@
         <activity android:name=".AdminMainActivity"/>
         <activity android:name=".ManageCourse"/>
         <activity android:name=".StudentInterface"/>
+        <activity android:name=".MainActivity"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

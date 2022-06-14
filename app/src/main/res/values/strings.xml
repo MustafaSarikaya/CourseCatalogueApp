@@ -41,6 +41,10 @@
     <string name="enter_email">Enter email</string>
     <string name="enter_your_name">Enter Full Name</string>
     <string name="full_name">Full Name</string>
+    <string name="user_name_key">user_name</string>
+    <string name="user_email_key">user_email</string>
+    <string name="user_role_key">user_role</string>
+    <string name="user_uid_key">user_uid</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>

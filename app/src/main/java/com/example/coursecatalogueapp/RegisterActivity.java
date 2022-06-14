@@ -2,6 +2,7 @@ package com.example.coursecatalogueapp;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -9,17 +10,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
+import com.example.coursecatalogueapp.Utils.Function;
+import com.example.coursecatalogueapp.modules.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 
 public class RegisterActivity extends Activity {
 
@@ -31,8 +28,7 @@ public class RegisterActivity extends Activity {
     private String password;
     private String fullName;
     private String userRole;
-    private DatabaseReference mDatabase;
-
+    private FirebaseFirestore db;
     //Declare UI elements
     EditText inputEmail, inputPassword, inputFullname;
     Spinner spinnerRoles;
@@ -47,7 +43,7 @@ public class RegisterActivity extends Activity {
 
         // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
-        mDatabase = FirebaseDatabase.getInstance().getReference();
+        db = FirebaseFirestore.getInstance();
 
         //Initialize UI elements
         inputEmail = findViewById(R.id.usernameInput);
@@ -71,7 +67,7 @@ public class RegisterActivity extends Activity {
                 fullName = inputFullname.getText().toString();
                 userRole = spinnerRoles.getSelectedItem().toString();
 
-                createAccount(email,password);
+                createAccount(fullName,email,userRole, password, getCurrentFocus());
                 // TODO add Role check functionality when the admin, instructor, student classes created
                 // TODO Create an intent to navigate to the appropriate page (student, instructor, admin)
             }
@@ -94,33 +90,42 @@ public class RegisterActivity extends Activity {
         }
     }
 
-    private void createAccount(String email, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            FirebaseUser user = mAuth.getCurrentUser();
+    public void createAccount(
+            final String name,
+            final String email,
+            final String role,
+            final String password,
+            final View view
+    ) {
+        // Create user on Firebase auth
+        UserController.getInstance().signUp(name, email, role, password, getCurrentFocus(), new Function() {
+            @Override
+            public void f(Object... params) {
+                writeToSharedPrefs(params);
 
-                            //check user role before adding them to appropriate firebase table
-                            if (userRole.equals("instructor")) {
-                                mDatabase.child("instructors").child(user.getUid()).child("fullName").setValue(fullName);
-                            } else if (userRole.equals("student")){
-                                mDatabase.child("students").child(user.getUid()).child("fullName").setValue(fullName);
-                            }
-                            updateUI(user);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            // TODO add error messages to the UI fields
-                            Toast.makeText(RegisterActivity.this, task.getException().getMessage(),
-                                    Toast.LENGTH_SHORT).show();
-                            updateUI(null);
-                        }
-                    }
-                });
+                //Navigate to Main Activity when successful
+                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
+                //set the new task and clear flags, so that the user can't go back here
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void writeToSharedPrefs(Object... params) {
+        Log.d("LOGIN DEBUG", "Writing data to shared preferences...");
+        //Writing data to shared preferences after everything has succeeded.
+        //Get shared preferences
+        SharedPreferences prefs = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
+        //Get the editor of the shared preferences
+        SharedPreferences.Editor editor = prefs.edit();
+        //Write login data to shared preferences
+        editor.putString(getString(R.string.user_name_key), (String) params[0]);
+        editor.putString(getString(R.string.user_email_key), (String) params[1]);
+        editor.putString(getString(R.string.user_role_key), (String) params[2]);
+        editor.putString(getString(R.string.user_uid_key), (String) params[3]);
+        //Apply shared preferences changes
+        editor.apply();
     }
 
     private void reload() { }

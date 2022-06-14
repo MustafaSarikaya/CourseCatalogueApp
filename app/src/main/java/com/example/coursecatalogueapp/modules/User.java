@@ -2,13 +2,13 @@ package com.example.coursecatalogueapp.modules;
 
 public abstract class User {
 
-    private String firstName, lastName, emailAddress, passWord;
+    private String name, role, emailAddress, uid;
 
-    public User(String firstName,String lastName, String emailAddress, String passWord){
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(String name, String role, String emailAddress, String uid){
+        this.name = name;
+        this.role = role;
         this.emailAddress = emailAddress;
-        this.passWord = passWord;
+        this.uid = uid;
     }
 
     public String toString(){
@@ -19,23 +19,23 @@ public abstract class User {
     }
 
     public String getFullName(){
-        return "Name: "+firstName+" "+lastName;
+        return "Name: "+ name +" "+ role;
     }
 
-    public String getFirstName(){
-        return firstName;
+    public String getName(){
+        return name;
     }
 
-    public void setFirstName(String firstName){
-        this.firstName=firstName;
+    public void setName(String name){
+        this.name = name;
     }
 
-    public String getLastName(){
-        return lastName;
+    public String getRole(){
+        return role;
     }
 
-    public void setLastName(String lastName){
-        this.lastName=lastName;
+    public void setRole(String role){
+        this.role = role;
     }
 
     public String getEmailAddress(){
@@ -46,11 +46,11 @@ public abstract class User {
         this.emailAddress = emailAddress;
     }
 
-    public String getPassWord(){
-        return passWord;
+    public String getUid(){
+        return uid;
     }
 
-    public void setPassWord(String passWord){
-        this.passWord = passWord;
+    public void setUid(String uid){
+        this.uid = uid;
     }
 }

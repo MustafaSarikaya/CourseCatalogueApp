@@ -40,7 +40,8 @@
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.38812561035156257" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.4485981308411215" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.275" />
+        <entry key="app/src/main/res/layout/activity_register.xml" value="0.30735930735930733" />
       </map>
     </option>
   </component>
