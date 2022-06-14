@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.coursecatalogueapp">
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseCatalogueApp"
         tools:targetApi="31">
-        <activity android:name=".StudentInterface"
+        <activity android:name=".ManageCourse"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />

@@ -14,6 +14,7 @@ import android.widget.TextView;
 //import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -34,6 +35,7 @@ public class ManageCourse extends AppCompatActivity {
         setContentView(R.layout.activity_manage_course);
 
         courseList = new ArrayList<>();
+        mDatabase = FirebaseDatabase.getInstance().getReference();
 
         //info Layout
         CourseId = findViewById(R.id.CourseId);
@@ -54,13 +56,7 @@ public class ManageCourse extends AppCompatActivity {
                 String name = CourseName.getText().toString();
                 String id = CourseId.getText().toString();
 
-//                Course course = new Course(id, name);
-                courseList.add("SEG2105");
-                courseList.add("SEG2105");
-                courseList.add("SEG2105");
-                courseList.add("SEG2105");
-                courseList.add("SEG2105");
-                // Add course to fire base;
+                writeCourse(id, name);
 
                 CourseName.setText("");
                 CourseId.setText("");
@@ -92,6 +88,13 @@ public class ManageCourse extends AppCompatActivity {
         });
 
 
+    }
+
+    public void writeCourse(String courseCode, String name){
+        String id = mDatabase.child("courses").push().getKey();
+        Course course = new Course(courseCode, name);
+        mDatabase.child("courses").child(id).child("courseCode").setValue(course.getCourseCode());
+        mDatabase.child("courses").child(id).child("courseName").setValue(course.getCourseName());
     }
 
     private void viewCourses(){
