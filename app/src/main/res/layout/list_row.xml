@@ -1,46 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    android:clickable="true"
+    android:focusable="true"
+    app:layout_constraintHeight_min="60dp">
+
     <TextView
         android:id="@+id/number"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/name"
-        android:layout_marginBottom="2sp"
+        android:layout_alignBaseline="@id/courseCode"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="8dp"
+        android:fontFamily="@font/roboto_condensed_bold"
         android:textColor="#A9E0F4"
+        android:textSize="28sp"
         android:textStyle="bold"
         tools:ignore="UnknownId" />
+
     <TextView
-        android:id="@+id/name"
+        android:id="@+id/courseCode"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_marginLeft="28sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_toStartOf="@+id/deleteButton"
+        android:layout_toEndOf="@+id/number"
+        android:fontFamily="@font/roboto"
         android:textColor="#000"
-        android:textSize="20sp"
+        android:textSize="24sp"
         tools:ignore="UnknownId" />
 
-    <ImageView
-        android:id="@+id/update"
-        android:layout_width="22sp"
-        android:layout_height="22sp"
+    <ImageButton
+        android:id="@+id/deleteButton"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="18sp"
-        android:layout_toLeftOf="@+id/remove"
-        android:src="@drawable/ic_baseline_edit_24"
-
-        />
-    <ImageView
-        android:layout_width="22sp"
-        android:layout_height="22sp"
-        android:id="@+id/remove"
-        android:layout_centerVertical="true"
-        android:layout_marginRight="18sp"
+        android:layout_marginEnd="18sp"
+        android:background="@color/white"
+        android:clickable="true"
+        android:contentDescription="@string/delete_button"
+        android:focusable="false"
+        android:minHeight="42dp"
         android:src="@drawable/remove"
-        android:layout_alignParentRight="true"
+        tools:ignore="RedundantDescriptionCheck" />
 
-        />
 </RelativeLayout>
+

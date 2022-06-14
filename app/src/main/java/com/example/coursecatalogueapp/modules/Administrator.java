@@ -10,8 +10,8 @@ public class Administrator extends User {
 //    private LinkedList<Student> studentList;
 //    private LinkedList<Instructor> InstructorList;
 
-    public Administrator(String firstName, String lastName, String emailAddress, String passWord) {
-        super(firstName, lastName, emailAddress, passWord);
+    public Administrator(String uid) {
+        super("admin", "admin", "admin@gmail.com", uid);
     }
 
 //    public Instructor createInstructor(String firstName, String lastName, String emailAddress, String passWord) {
@@ -49,10 +49,10 @@ public class Administrator extends User {
 //        }
 //    }
 
-    public Course creatCourse(String courseCode, String courseName) {
-        Course result = new Course(courseCode, courseName);
-        return result;
-    }
+//    public Course creatCourse(String courseCode, String courseName) {
+//        Course result = new Course(courseCode, courseName);
+//        return result;
+//    }
 
     public void addCourse(Course course) {
         courseList.add(course);

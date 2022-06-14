@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "1096545543213",
+    "firebase_url": "https://course-catalogue-app-default-rtdb.firebaseio.com",
     "project_id": "course-catalogue-app",
     "storage_bucket": "course-catalogue-app.appspot.com"
   },

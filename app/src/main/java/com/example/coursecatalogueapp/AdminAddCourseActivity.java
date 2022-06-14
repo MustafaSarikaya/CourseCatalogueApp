@@ -17,21 +17,18 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
-public class RegisterActivity extends Activity {
+public class AdminAddCourseActivity extends Activity {
 
     private static final String TAG = "Register";
 
     //Declare variables
-    private FirebaseAuth mAuth;
-    private String email;
-    private String password;
-    private String fullName;
-    private String userRole;
+    private String courseName;
+    private String courseCode;
     private FirebaseFirestore db;
     //Declare UI elements
-    EditText inputEmail, inputPassword, inputFullname;
+    EditText inputCourseName, inputCourseCode;
     Spinner spinnerRoles;
-    Button registerButton;
+    Button addButton;
     TextView loginLink, spinnerText, pageTitle;
 
     Intent i;
@@ -42,65 +39,34 @@ public class RegisterActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
+        // Initialize Firebase
         db = FirebaseFirestore.getInstance();
 
         //Initialize UI elements
-        inputEmail = findViewById(R.id.usernameInput);
-        inputPassword = findViewById(R.id.passwordInput);
-        inputFullname = findViewById(R.id.fullNameInput);
-        spinnerRoles = findViewById(R.id.roleSpinnerInput);
-        registerButton = findViewById(R.id.registerBtn);
-        spinnerText = findViewById(R.id.roleSpinnerText);
-        pageTitle = findViewById(R.id.registerTitle);
-        loginLink = findViewById(R.id.loginLink);
-        i = getIntent();
-        if (i.getExtras() != null) {
-            userRole = i.getStringExtra("TAG");
-            spinnerRoles.setVisibility(View.INVISIBLE);
-            loginLink.setVisibility(View.INVISIBLE);
-            spinnerText.setVisibility(View.INVISIBLE);
-            registerButton.setText(R.string.add);
-            pageTitle.setText(userRole.equals("Instructor") ?
-                    R.string.addInstructor :
-                    R.string.addStudent);
-        }
+//        inputCourseName = findViewById(R.id.);
+//        inputCourseCode = findViewById(R.id.);
+//        addButton = findViewById(R.id.);
 
-        setRegisterClickListener();
-    }
-
-    private void setRegisterClickListener() {
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //get the submitted form data
-                email = inputEmail.getText().toString();
-                password = inputPassword.getText().toString();
-                fullName = inputFullname.getText().toString();
-                userRole = userRole == null ? spinnerRoles.getSelectedItem().toString() : userRole;
+                courseName = inputCourseName.getText().toString();
+                courseCode = inputCourseCode.getText().toString();
 
-                createAccount(fullName,email,userRole, password, getCurrentFocus());
             }
         });
     }
 
-    //loginLink click
-    public void onLinkClick(View view) {
-        Intent i = new Intent(RegisterActivity.this, LogInActivity.class);
-        startActivity(i);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            reload();
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            reload();
+//        }
+//    }
 
     public void createAccount(
             final String name,
@@ -117,7 +83,7 @@ public class RegisterActivity extends Activity {
 
                 Intent intent;
                 if (i.getExtras() == null) {
-                    intent = new Intent(RegisterActivity.this, MainActivity.class);
+                    intent = new Intent(AdminAddCourseActivity.this, MainActivity.class);
                     //set the new task and clear flags, so that the user can't go back here
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
