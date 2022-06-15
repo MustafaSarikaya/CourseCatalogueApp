@@ -32,7 +32,7 @@ public class AdminCourseListActivity extends AppCompatActivity {
 
     static AdminCourseListAdapter adapter;
     EditText input;
-    ImageView enter, HomeButton, addUserButton, Update;
+    ImageView enter, HomeButton, addCourseButton, Update;
     String isCourse;
     Intent intent;
 
@@ -64,7 +64,7 @@ public class AdminCourseListActivity extends AppCompatActivity {
         input= findViewById(R.id.input);
         enter= findViewById(R.id.add);
         HomeButton = findViewById(R.id.Home);
-        addUserButton =findViewById(R.id.addUserButton);
+        addCourseButton =findViewById(R.id.addUserButton);
 //        Update = findViewById(R.id.update);
 
 
@@ -97,7 +97,7 @@ public class AdminCourseListActivity extends AppCompatActivity {
             }
         });
 
-        addUserButton.setOnClickListener(new View.OnClickListener() {
+        addCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(AdminCourseListActivity.this, AdminAddCourseActivity.class);

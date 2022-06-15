@@ -18,7 +18,7 @@ public class AdminMainActivity extends Activity {
 
     protected void onCreate (Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_adminmainpage);
+        setContentView(R.layout.activity_admin_main);
 
         instructorsButton = (Button)findViewById(R.id.instructors);
         Courses = (Button)findViewById(R.id.Courses);

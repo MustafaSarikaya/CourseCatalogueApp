@@ -4,23 +4,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:content="com.example.android.coursecatalogueapp.AdminMainActivity">
+    android:background="@color/white"
+    tools:context=".InstructorMainActivity">
 
-    <TextView
-        android:id="@+id/InstructorPageText"
-        android:layout_width="228dp"
-        android:layout_height="76dp"
-        android:layout_marginTop="100dp"
-        android:fontFamily="@font/roboto_condensed_bold"
-        android:text="Instructor Main Page"
-        android:textAlignment="center"
-        android:textAllCaps="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="24sp"
-        android:textStyle="bold|italic"
-        android:typeface="normal"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarInstructorMain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructorMainTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbarInstructorMain" >
+
+        <TextView
+            android:id="@+id/loginStatusInstructor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center"
+            android:textSize="16sp" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
