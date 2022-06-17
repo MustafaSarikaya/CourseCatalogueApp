@@ -1,6 +1,8 @@
 package com.example.coursecatalogueapp.auth;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -25,15 +27,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+
+//    User account;
+    String userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().hide();
 
-        User account = UserController.getInstance().getUserAccount();
+        SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
+        userRole = sharedPref.getString(getString(R.string.user_role_key), null);
 
         FirebaseMessaging.getInstance().getToken()
         .addOnCompleteListener(new OnCompleteListener<String>() {
@@ -59,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent;
         //Sets intent based on what role the user is
-        switch(account.getRole()) {
+        switch(userRole) {
             case "admin":
                 intent = new Intent(MainActivity.this, AdminMainActivity.class);
                 break;

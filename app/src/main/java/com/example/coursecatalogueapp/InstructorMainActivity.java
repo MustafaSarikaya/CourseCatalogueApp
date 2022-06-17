@@ -2,6 +2,7 @@ package com.example.coursecatalogueapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
@@ -11,7 +12,7 @@ public class InstructorMainActivity extends AppCompatActivity {
 
     TextView pageTitle, loginStatus;
 
-    User account;
+    String userName, userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +22,12 @@ public class InstructorMainActivity extends AppCompatActivity {
         pageTitle = findViewById(R.id.instructorMainTitle);
         loginStatus = findViewById(R.id.loginStatusInstructor);
 
-        account = UserController.getInstance().getUserAccount();
+        SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
+        userName = sharedPref.getString(getString(R.string.user_name_key), null);
+        userRole = sharedPref.getString(getString(R.string.user_role_key), null);
 
-        pageTitle.setText("Welcome " + account.getName());
-        loginStatus.setText("Logged in as " + account.getRole());
+        pageTitle.setText("Welcome " + userName);
+        loginStatus.setText("Logged in as " + userRole);
 
     }
 }

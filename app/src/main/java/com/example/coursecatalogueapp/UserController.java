@@ -61,7 +61,7 @@ public class UserController {
             @Override
             public void onFailure(@NonNull Exception e) {
                 //Show failed error
-//                Utils.showSnackbar("Failed to sign in as admin.", view);
+                Utils.showSnackbar("Failed to sign in as admin.", view);
             }
         });
     }
@@ -76,21 +76,15 @@ public class UserController {
      */
     public void signIn(
         final String email,
-        String password,
+        final String password,
         final View view,
         final Function onSuccess
     ) {
         //Sign into firebase
-        auth.signInWithEmailAndPassword(email, password)
-        .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-            //Successful login attempt
+        auth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
             @Override
             public void onSuccess(AuthResult authResult) {
-                //Retrieve user info from firestore
-                firestore.collection("users")
-                .document(auth.getCurrentUser().getUid()) //Gets the document with the user UID, where the data should be stored.
-                .get()
-                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                firestore.collection("users").document(auth.getCurrentUser().getUid()).get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
                         //Successful data getting
@@ -105,25 +99,21 @@ public class UserController {
                                 setUserAccount(new Student(n, email, auth.getCurrentUser().getUid()));
                                 break;
                             default:
-//                                Utils.showSnackbar("Invalid data from database!", view);
+                                Utils.showSnackbar("Invalid data from database!", view);
                                 break;
                         }
-                        //Call the function to call after everything has succeeded.
-                        //We pass through the login data to write to shared preferences.
                         onSuccess.f(n, email, r, auth.getCurrentUser().getUid());
+
                     }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    //Failed to get data from database
+                }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
                         //Show failed error
-//                        Utils.showSnackbar("Failed to get user details from database!", view);
+                        Utils.showSnackbar("Failed to get user details from database!", view);
                     }
                 });
             }
-        })
-        .addOnFailureListener(new OnFailureListener() {
+        }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
                 //Failed login attempt
@@ -131,10 +121,10 @@ public class UserController {
                     //Try to get firebase auth exception message
                     String errorMessage = "Log In Error: " + ((FirebaseAuthException) e).getErrorCode().replace("ERROR_", "");
                     //Show failed error
-//                    Utils.showSnackbar(errorMessage, view);
+                    Utils.showSnackbar(errorMessage, view);
                 } catch (Exception ex) {
                     //Unexpected error
-//                    Utils.showSnackbar("An unexpected error occurred.", view);
+                    Utils.showSnackbar("An unexpected error occurred.", view);
                 }
             }
         });
@@ -211,7 +201,7 @@ public class UserController {
             @Override
             public void onFailure(@NonNull Exception e) {
                 //Show failed error
-//                Utils.showSnackbar("Failed to create user!", view);
+                Utils.showSnackbar("Failed to create user!", view);
             }
         });
     }

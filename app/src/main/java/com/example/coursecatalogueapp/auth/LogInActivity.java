@@ -11,9 +11,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.UserController;
 import com.example.coursecatalogueapp.Utils.Function;
+import com.example.coursecatalogueapp.Utils.Utils;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -23,11 +28,11 @@ public class LogInActivity extends Activity {
     private static final String TAG = "Login";
 
     private FirebaseAuth mAuth;
-    private String username;
+    private String email;
     private String password;
     private FirebaseFirestore db;
 
-    EditText inputUsername, inputPassword;
+    EditText inputEmail, inputPassword;
     TextView registerLink;
     Button loginButton;
 
@@ -36,11 +41,7 @@ public class LogInActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        // Initialize Firebase Auth
-        mAuth = FirebaseAuth.getInstance();
-        db = FirebaseFirestore.getInstance();
-
-        inputUsername = findViewById(R.id.inputUsername);
+        inputEmail = findViewById(R.id.inputUsername);
         inputPassword = findViewById(R.id.inputPassword);
         loginButton = findViewById(R.id.login);
         registerLink = findViewById(R.id.registerLink);
@@ -48,15 +49,21 @@ public class LogInActivity extends Activity {
         setLoginClickListener();
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mAuth = FirebaseAuth.getInstance();
+        db = FirebaseFirestore.getInstance();
+    }
+
+
     private void setLoginClickListener() {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                username = inputUsername.getText().toString();
+                email = inputEmail.getText().toString();
                 password = inputPassword.getText().toString();
-                signIn(username,password);
-                // TODO add Role check functionality when the admin, instructor, student classes created
-                // TODO Create an intent to navigate to the appropriate page (student, instructor, admin)
+                signIn(email,password);
             }
         });
     }
@@ -65,16 +72,6 @@ public class LogInActivity extends Activity {
     public void onLinkClick(View view) {
         Intent i = new Intent(LogInActivity.this, RegisterActivity.class);
         startActivity(i);
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            reload();
-        }
     }
 
     private void signIn(String email, String password) {
@@ -98,40 +95,40 @@ public class LogInActivity extends Activity {
             });
         } else {
             //Validates input and gets error message
-//            final LoginError loginError = validateInput(email, password);
-//
-//            //If there is an error
-//            if(loginError != LoginError.None) {
-//                //Show a snackbar with the error message
-//                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.login_page), loginError.toString(), BaseTransientBottomBar.LENGTH_SHORT);
-//                //Add close button
-//                mySnackbar.setAction("CLOSE", new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                    }
-//                });
-//                //Clear text when snackbar is closed
-//                mySnackbar.addCallback(new Snackbar.Callback() {
-//                    @Override
-//                    public void onDismissed(Snackbar snackbar, int event) {
-//                        switch(loginError) {
-//                            case FieldsEmpty:
-//                                break;
-//                            case EmailInvalid:
-//                                //Clears only the email entry
-//                                login_emailEntry.getText().clear();
-//                                break;
-//                            case InvalidAdminLogin:
-//                            case PasswordTooShort:
-//                                //Clears only the password entry
-//                                login_passwordEntry.getText().clear();
-//                                break;
-//                        }
-//                    }
-//                });
-//                //Show snackbar
-//                mySnackbar.show();
-//            } else {
+            final LoginError loginError = validateInput(email, password);
+
+            //If there is an error
+            if(loginError != LoginError.None) {
+                //Show a snackbar with the error message
+                Snackbar mySnackbar = Snackbar.make(findViewById(R.id.loginPage), loginError.toString(), BaseTransientBottomBar.LENGTH_SHORT);
+                //Add close button
+                mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                    }
+                });
+                //Clear text when snackbar is closed
+                mySnackbar.addCallback(new Snackbar.Callback() {
+                    @Override
+                    public void onDismissed(Snackbar snackbar, int event) {
+                        switch(loginError) {
+                            case FieldsEmpty:
+                                break;
+                            case EmailInvalid:
+                                //Clears only the email entry
+                                inputEmail.getText().clear();
+                                break;
+                            case InvalidAdminLogin:
+                            case PasswordTooShort:
+                                //Clears only the password entry
+                                inputPassword.getText().clear();
+                                break;
+                        }
+                    }
+                });
+                //Show snackbar
+                mySnackbar.show();
+            } else {
                 //Sign in using UserController
                 UserController.getInstance().signIn(email, password, getCurrentFocus(), new Function() {
                     @Override
@@ -145,7 +142,7 @@ public class LogInActivity extends Activity {
                         startActivity(intent);
                     }
                 });
-//            }
+            }
         }
     }
 
@@ -171,5 +168,36 @@ public class LogInActivity extends Activity {
 
     }
 
+        /**
+         * Validates the inputs of login page
+         * @param email the email to validate
+         * @param password the password to validate
+         * @return the LoginError value for the given inputs.
+         */
+        private LoginError validateInput(String email, String password) {
+            //Checks if any field is empty
+            if(email.isEmpty() || password.isEmpty()) {
+                return LoginError.FieldsEmpty;
+            }
+            if(email.compareTo("admin") == 0) {
+                //This should only happen when the admin password is wrong.
+                return LoginError.InvalidAdminLogin;
+            }
+            //Validates Email
+            boolean validEmail = Utils.isEmailValid(email);
+            if(!validEmail) {
+                return LoginError.EmailInvalid;
+            }
+            //Checks if password is long enough
+            if(password.length() < 6) {
+                return LoginError.PasswordTooShort;
+            }
+            //Returns no error message if inputs are valid.
+            return LoginError.None;
+        }
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+    }
 }
