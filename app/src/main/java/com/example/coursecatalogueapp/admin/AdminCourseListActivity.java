@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.admin;
 
 import static android.app.ProgressDialog.show;
 
@@ -16,6 +16,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
@@ -27,11 +28,11 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ManageCourse extends AppCompatActivity {
+public class AdminCourseListActivity extends AppCompatActivity {
 
-    static AdminUserListAdapter adapter;
+    static AdminCourseListAdapter adapter;
     EditText input;
-    ImageView enter, HomeButton, addUserButton, Update;
+    ImageView enter, HomeButton, addCourseButton, Update;
     String isCourse;
     Intent intent;
 
@@ -63,7 +64,7 @@ public class ManageCourse extends AppCompatActivity {
         input= findViewById(R.id.input);
         enter= findViewById(R.id.add);
         HomeButton = findViewById(R.id.Home);
-        addUserButton =findViewById(R.id.addUserButton);
+        addCourseButton =findViewById(R.id.addUserButton);
 //        Update = findViewById(R.id.update);
 
 
@@ -91,16 +92,15 @@ public class ManageCourse extends AppCompatActivity {
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManageCourse.this, AdminMainActivity.class);
+                Intent intent = new Intent(AdminCourseListActivity.this, AdminMainActivity.class);
                 startActivity(intent);
             }
         });
 
-        addUserButton.setOnClickListener(new View.OnClickListener() {
+        addCourseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ManageCourse.this,RegisterActivity.class);
-                intent.putExtra("TAG",isCourse);
+                Intent intent = new Intent(AdminCourseListActivity.this, AdminAddCourseActivity.class);
                 startActivity(intent);
             }
         });
@@ -109,41 +109,46 @@ public class ManageCourse extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        try {
+                    courseReference.orderBy("courseCode").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                      @Override
+                      public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                          if (error != null) {
+                              Log.w("UsersActivity", "Listen failed.", error);
+                              return;
+                          }
 
-        courseReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
-            @Override
-            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
-                if (error != null) {
-                    Log.w("UsersActivity", "Listen failed.", error);
-                    return;
-                }
-                //Clear the list to prepare for loading of new data
-                courses.clear();
-//                userList.setAdapter(adapter);
-                //Iterate through the documents read from firestore
-                for(QueryDocumentSnapshot doc : value) {
-                    //If the document exists
-                    if(doc.exists()) {
-                        //Get the basic user data from the document
-                        String courseName = doc.getString("courseName");
-                        String courseCode = doc.getString("courseCode");
-                        String id = doc.getId();
-                        //Create an course Object
-                        Course course = new Course(courseCode, courseName, id);
+                              //Clear the list to prepare for loading of new data
+                              courses.clear();
+                              courseList.setAdapter(adapter);
+                              //Iterate through the documents read from firestore
+                              for(QueryDocumentSnapshot doc : value) {
+                                  //If the document exists
+                                  if(doc.exists()) {
+                                      //Get the basic user data from the document
+                                      String courseName = doc.getString("courseName");
+                                      String courseCode = doc.getString("courseCode");
+                                      String id = doc.getId();
+                                      //Create an course Object
+                                      Course course = new Course(courseCode, courseName, id);
 
-                        //Add the course to the list
-                        courses.add(course);
-                    }
-                }
-                //Set up the list in the UI
-                setUpList(courses, courseList);
-            }
-        });
+                                      //Add the course to the list
+                                      courses.add(course);
+                                  }
+                              }
+                              //Set up the list in the UI
+                              setUpList(courses, courseList);
+
+                      }
+                  });
+        } catch(Exception e) {
+            System.out.println(e);
+        }
     }
 
     private void setUpList(final List<Course> courses, ListView listView) {
         //Create a list adapter
-        AdminCourseListAdapter adapter = new AdminCourseListAdapter(ManageCourse.this, courses);
+        adapter = new AdminCourseListAdapter(AdminCourseListActivity.this, courses);
         for(int i = 0; i < adapter.getCount(); i++) {
             //Get final version of index
             final int finalI = i;
@@ -156,8 +161,17 @@ public class ManageCourse extends AppCompatActivity {
                     courseInfoDialogue(courses.get(finalI));
                 }
             });
+
+            ImageButton updateButton = (ImageButton) view.findViewById(R.id.courseEditBtn);
+            updateButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
+
             //Set delete button functions
-            ImageButton deleteButton = (ImageButton) view.findViewById(R.id.deleteButton);
+            ImageButton deleteButton = (ImageButton) view.findViewById(R.id.courseDeleteBtn);
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -176,7 +190,7 @@ public class ManageCourse extends AppCompatActivity {
      */
     private void courseInfoDialogue(Course course) {
         //Create new AlertDialog
-        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(ManageCourse.this);
+        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(AdminCourseListActivity.this);
         alertDialogBuilder
                 .setTitle(course.getCourseName()) //Set the title of the dialog to the account name
                 .setMessage(course.toString()) //Set the message of the dialog to the account text
@@ -201,7 +215,7 @@ public class ManageCourse extends AppCompatActivity {
      */
     private void deleteCourseDialogue(final Course course) {
         //Create new AlertDialog
-        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(ManageCourse.this);
+        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(AdminCourseListActivity.this);
         alertDialogBuilder
                 .setTitle("Delete user account for " + course.getCourseName() + "?")
                 .setMessage("Are you sure you want to delete this user account? Any data associated with this user will be permanently deleted.")

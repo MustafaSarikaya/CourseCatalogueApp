@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.admin;
 
 import static android.app.ProgressDialog.show;
 
@@ -13,11 +13,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.ImageSwitcher;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Toast;
 
+import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.auth.RegisterActivity;
 import com.example.coursecatalogueapp.modules.Instructor;
 import com.example.coursecatalogueapp.modules.Student;
 import com.example.coursecatalogueapp.modules.User;
@@ -28,8 +28,6 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -109,7 +107,7 @@ public class AdminUserListActivity extends AppCompatActivity {
         addUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AdminUserListActivity.this,RegisterActivity.class);
+                Intent intent = new Intent(AdminUserListActivity.this, RegisterActivity.class);
                 intent.putExtra("TAG",userRole);
                 startActivity(intent);
             }

@@ -16,8 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CourseCatalogueApp"
         tools:targetApi="31">
-        <activity android:name=".LogInActivity"
-        android:exported="true">
+        <activity android:name=".auth.LogInActivity"
         android:exported="true">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
@@ -25,12 +24,15 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".RegisterActivity"/>
-        <activity android:name=".AdminUserListActivity"/>
-        <activity android:name=".AdminMainActivity"/>
-        <activity android:name=".ManageCourse"/>
-        <activity android:name=".StudentInterface"/>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".auth.RegisterActivity"/>
+        <activity android:name=".admin.AdminUserListActivity"/>
+        <activity android:name=".admin.AdminAddCourseActivity"/>
+        <activity android:name=".admin.AdminMainActivity"/>
+        <activity android:name=".admin.AdminCourseListActivity"/>
+        <activity android:name=".StudentMainActivity"/>
+        <activity android:name=".auth.MainActivity"/>
+        <activity android:name=".InstructorMainActivity"/>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

@@ -50,6 +50,11 @@
     <string name="edit_button">edit button</string>
     <string name="home_icon">home icon</string>
     <string name="add_icon">add icon</string>
+    <string name="course_code">Course Code</string>
+    <string name="course_name">Course Name</string>
+    <string name="seg2105">SEG2105</string>
+    <string name="intro_to_software_engineering">Intro to Software Engineering</string>
+    <string name="add_course">Add Course</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>

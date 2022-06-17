@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.auth;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -7,6 +7,11 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.coursecatalogueapp.InstructorMainActivity;
+import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.StudentMainActivity;
+import com.example.coursecatalogueapp.UserController;
+import com.example.coursecatalogueapp.admin.AdminMainActivity;
 import com.example.coursecatalogueapp.modules.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -58,11 +63,11 @@ public class MainActivity extends AppCompatActivity {
             case "admin":
                 intent = new Intent(MainActivity.this, AdminMainActivity.class);
                 break;
-//            case "instructor":
-//                intent = new Intent(MainActivity.this, InstructorActivity.class);
-//                break;
+            case "Instructor":
+                intent = new Intent(MainActivity.this, InstructorMainActivity.class);
+                break;
             case "Student":
-                intent = new Intent(MainActivity.this, StudentInterface.class);
+                intent = new Intent(MainActivity.this, StudentMainActivity.class);
                 break;
             default:
                 intent = new Intent(MainActivity.this, LogInActivity.class);
