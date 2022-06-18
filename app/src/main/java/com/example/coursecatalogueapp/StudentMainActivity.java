@@ -2,16 +2,18 @@ package com.example.coursecatalogueapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.coursecatalogueapp.modules.User;
 
-public class StudentMainActivity extends AppCompatActivity {
+public class StudentMainActivity extends Activity {
 
     TextView pageTitle, loginStatus;
 
-    User account;
+    String userName, userRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,10 +23,12 @@ public class StudentMainActivity extends AppCompatActivity {
         pageTitle = findViewById(R.id.studentMainTitle);
         loginStatus = findViewById(R.id.loginStatusStudent);
 
-        account = UserController.getInstance().getUserAccount();
+        SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
+        userName = sharedPref.getString(getString(R.string.user_name_key), null);
+        userRole = sharedPref.getString(getString(R.string.user_role_key), null);
 
-        pageTitle.setText("Welcome " + account.getName());
-        loginStatus.setText("Logged in as " + account.getRole());
+        pageTitle.setText("Welcome " + userName);
+        loginStatus.setText("Logged in as " + userRole);
 
     }
 }
