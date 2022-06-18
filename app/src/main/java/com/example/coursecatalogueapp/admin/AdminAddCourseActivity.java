@@ -34,9 +34,12 @@ public class AdminAddCourseActivity extends Activity {
     private CollectionReference coursesReference;
     //Declare UI elements
     EditText inputCourseName, inputCourseCode;
+    TextView addCourseTitle;
     Button addButton;
+    Boolean isUpdate;
+    String courseId;
 
-
+    Intent i;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +54,17 @@ public class AdminAddCourseActivity extends Activity {
         inputCourseName = findViewById(R.id.addCourseName);
         inputCourseCode = findViewById(R.id.addCourseCode);
         addButton = findViewById(R.id.addCourseBtn);
+        addCourseTitle = findViewById(R.id.addCourseTitle);
+
+        i = getIntent();
+        if (i.getExtras() != null) {
+             isUpdate = i.getStringExtra("TAG").equals("update");
+             addButton.setText(R.string.update);
+             addCourseTitle.setText(R.string.update_title);
+             inputCourseCode.setText(i.getStringExtra("courseCode"));
+             inputCourseName.setText(i.getStringExtra("courseName"));
+             courseId = i.getStringExtra("courseId");
+        }
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,20 +73,28 @@ public class AdminAddCourseActivity extends Activity {
                 courseName = inputCourseName.getText().toString();
                 courseCode = inputCourseCode.getText().toString();
 
-                createCourse(courseName,courseCode, getCurrentFocus());
+                if (isUpdate) {
+                    updateCourse(courseCode, courseName, courseId, getCurrentFocus());
+                } else {
+                    createCourse(courseName, courseCode, getCurrentFocus());
+                }
             }
         });
     }
 
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            reload();
-//        }
-//    }
+    private void updateCourse(
+            final String courseCode,
+            final String courseName,
+            final String courseId,
+            final View view
+    ) {
+        Map<String, Object> courseInfo = new HashMap<>();
+        courseInfo.put("courseName", courseName);
+        courseInfo.put("courseCode", courseCode);
+
+        coursesReference.document(courseId).set(courseInfo);
+        back(view);
+    }
 
     public void createCourse(
             final String courseName,

@@ -12,6 +12,7 @@
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activitiy_edit.xml" value="0.365625" />
         <entry key="app/src/main/res/layout/activity_accounts.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_admin_add_course.xml" value="0.2572463768115942" />
         <entry key="app/src/main/res/layout/activity_admin_course.xml" value="0.13134057971014493" />
         <entry key="app/src/main/res/layout/activity_admin_course_list.xml" value="0.5666666666666667" />
         <entry key="app/src/main/res/layout/activity_admin_main.xml" value="0.1" />

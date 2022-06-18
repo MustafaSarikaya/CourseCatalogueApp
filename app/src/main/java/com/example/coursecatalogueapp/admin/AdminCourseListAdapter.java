@@ -1,16 +1,19 @@
 package com.example.coursecatalogueapp.admin;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.auth.RegisterActivity;
 import com.example.coursecatalogueapp.modules.Course;
 import com.example.coursecatalogueapp.modules.User;
 
@@ -28,7 +31,7 @@ class AdminCourseListAdapter extends ArrayAdapter<Course> {
 
     @NonNull
     @Override
-    public  View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater =(LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View listViewItem = layoutInflater.inflate(R.layout.course_list_row, null,true);
 
@@ -41,6 +44,30 @@ class AdminCourseListAdapter extends ArrayAdapter<Course> {
 
         courseName.setText(course.getCourseName());
         courseCode.setText(course.getCourseCode());
+
+
+        ImageButton updateButton = (ImageButton) listViewItem.findViewById(R.id.courseEditBtn);
+        updateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, AdminAddCourseActivity.class);
+                i.putExtra("TAG", "update");
+                i.putExtra("courseName", course.getCourseName());
+                i.putExtra("courseCode",course.getCourseCode());
+                i.putExtra("courseId", course.getId());
+                context.startActivity(i);
+            }
+        });
+
+        //Set delete button functions
+        ImageButton deleteButton = (ImageButton) listViewItem.findViewById(R.id.courseDeleteBtn);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminCourseListActivity.deleteCourse(course);
+                System.out.println("AĞĞĞĞĞĞĞĞ");
+            }
+        });
 
         return listViewItem;
     }
