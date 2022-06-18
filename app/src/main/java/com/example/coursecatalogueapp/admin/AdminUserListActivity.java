@@ -170,7 +170,7 @@ public class AdminUserListActivity extends AppCompatActivity {
                 }
             });
             //Set delete button functions
-            ImageButton deleteButton = (ImageButton) view.findViewById(R.id.deleteButton);
+            ImageButton deleteButton = (ImageButton) view.findViewById(R.id.UserDeleteBtn);
             deleteButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -42,7 +43,18 @@ class AdminCourseListAdapter extends ArrayAdapter<Course> {
         courseName.setText(course.getCourseName());
         courseCode.setText(course.getCourseCode());
 
+        ImageButton deleteButton = convertView.findViewById(R.id.courseDeleteBtn);
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AdminCourseListActivity.RemoveCourse(position);
+            }
+        });
+
         return listViewItem;
     }
+
+
+
 }
 

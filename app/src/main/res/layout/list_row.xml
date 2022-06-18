@@ -1,55 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:clickable="true"
-    android:focusable="true"
-    app:layout_constraintHeight_min="60dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/number"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@id/courseCode"
-        android:layout_alignParentStart="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="8dp"
-        android:fontFamily="@font/roboto_condensed_bold"
-        android:textColor="#A9E0F4"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        tools:ignore="UnknownId" />
+        app:cardUseCompatPadding="false"
+        app:contentPadding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/courseCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_toStartOf="@+id/deleteButton"
-        android:layout_toEndOf="@+id/number"
-        android:fontFamily="@font/roboto"
-        android:textColor="#000"
-        android:textSize="24sp"
-        tools:ignore="UnknownId" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <ImageButton
-        android:id="@+id/deleteButton"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="18sp"
-        android:background="@color/white"
-        android:clickable="true"
-        android:contentDescription="@string/delete_button"
-        android:focusable="false"
-        android:minHeight="42dp"
-        android:src="@drawable/remove"
-        tools:ignore="RedundantDescriptionCheck" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-</RelativeLayout>
+                <TextView
+                    android:id="@+id/UserName"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1" />
 
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/UserDeleteBtn"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.1"
+                android:contentDescription="delete icon"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                app:srcCompat="@drawable/remove"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

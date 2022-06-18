@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.modules.Course;
@@ -32,8 +33,9 @@ public class AdminCourseListActivity extends AppCompatActivity {
 
     static AdminCourseListAdapter adapter;
     EditText input;
-    ImageView enter, HomeButton, addCourseButton, Update;
+    ImageView enter, HomeButton, addCourseButton, delete, Update;
     String isCourse;
+//    TextView courseCode;
     Intent intent;
 
 //    private TextView isim2, numara2,email2;
@@ -42,7 +44,7 @@ public class AdminCourseListActivity extends AppCompatActivity {
 //    private AlertDialog.Builder dialogBuilder;
 //    private AlertDialog dialog;
 
-    List<Course> courses;
+    static List<Course> courses;
     static private ListView courseList;
     private FirebaseFirestore firestore;
     private CollectionReference courseReference;
@@ -60,12 +62,16 @@ public class AdminCourseListActivity extends AppCompatActivity {
         //Set up the employee and customer lists
         courses = new ArrayList<>();
 
+
+
         courseList = findViewById(R.id.listview);
+
         input= findViewById(R.id.input);
         enter= findViewById(R.id.add);
         HomeButton = findViewById(R.id.Home);
         addCourseButton =findViewById(R.id.addUserButton);
-//        Update = findViewById(R.id.update);
+//        Update = findViewById(R.id.courseEditBtn);
+//        delete = findViewById(R.id.courseDeleteBtn);
 
 
 //        userList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -81,13 +87,13 @@ public class AdminCourseListActivity extends AppCompatActivity {
 //            }
 //        });
 
-        courseList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-            @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
-                deleteCourse(courses.get(position));
-                return false;
-            }
-        });
+//        courseList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+//            @Override
+//            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+//                deleteCourse(courses.get(position));
+//                return false;
+//            }
+//        });
 
         HomeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,6 +110,22 @@ public class AdminCourseListActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+//        delete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                String CourseCode = input.getText().toString();
+//
+//                int index = -1;
+//                for(int i = 0; i < courses.size(); i++){
+//                    if(courses.get(i).getCourseCode().equals(CourseCode)){
+//                        index = i;
+//                    }
+//                }
+//
+//                deleteUser(courses.get(index));
+//            }
+//        });
     }
 
     @Override
@@ -151,34 +173,28 @@ public class AdminCourseListActivity extends AppCompatActivity {
         adapter = new AdminCourseListAdapter(AdminCourseListActivity.this, courses);
         for(int i = 0; i < adapter.getCount(); i++) {
             //Get final version of index
-            final int finalI = i;
-            //Get the list item from the adapter at the index
-            View view = adapter.getView(i, null, listView);
-            //Open the user info dialog when the list item is clicked
-            view.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    courseInfoDialogue(courses.get(finalI));
-                }
-            });
+//            final int finalI = i;
+//            //Get the list item from the adapter at the index
+//            View view = adapter.getView(i, null, listView);
+//            //Open the user info dialog when the list item is clicked
+//            view.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    //courseInfoDialogue(courses.get(finalI));
+//                }
+//            });
 
-            ImageButton updateButton = (ImageButton) view.findViewById(R.id.courseEditBtn);
-            updateButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                }
-            });
-
-            //Set delete button functions
-            ImageButton deleteButton = (ImageButton) view.findViewById(R.id.courseDeleteBtn);
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    deleteCourseDialogue(courses.get(finalI));
-                }
-            });
-            //Add the list item to the list view
+//            ImageButton updateButton = (ImageButton) view.findViewById(R.id.courseEditBtn);
+//            updateButton.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//
+//                }
+//           });
+//
+//            Set delete button functions
+//
+//            Add the list item to the list view
 
         }
         listView.setAdapter(adapter);
@@ -211,43 +227,44 @@ public class AdminCourseListActivity extends AppCompatActivity {
 
     /**
      * Prompts the admin if the admin truly wants to delete the given account
-     * @param course the account to delete
+     * @param  course
      */
-    private void deleteCourseDialogue(final Course course) {
-        //Create new AlertDialog
-        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(AdminCourseListActivity.this);
-        alertDialogBuilder
-                .setTitle("Delete user account for " + course.getCourseName() + "?")
-                .setMessage("Are you sure you want to delete this user account? Any data associated with this user will be permanently deleted.")
-                .setCancelable(true)
-                .setPositiveButton(
-                        "YES",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                //Delete the account
-                                deleteCourse(course);
-                                dialog.cancel();
-                            }
-                        }
-                )
-                .setNegativeButton(
-                        "NO",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.cancel();
-                            }
-                        }
-                );
-        //Show AlertDialog
-        androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
-        alertDialog.show();
-    }
+//    public void deleteCourseDialogue(final Course course) {
+//        //Create new AlertDialog
+//        androidx.appcompat.app.AlertDialog.Builder alertDialogBuilder = new androidx.appcompat.app.AlertDialog.Builder(AdminCourseListActivity.this);
+//        alertDialogBuilder
+//                .setTitle("Delete user account for " + course.getCourseName() + "?")
+//                .setMessage("Are you sure you want to delete this user account? Any data associated with this user will be permanently deleted.")
+//                .setCancelable(true)
+//                .setPositiveButton(
+//                        "YES",
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                //Delete the account
+////
+//                                dialog.cancel();
+//                            }
+//                        }
+//                )
+//                .setNegativeButton(
+//                        "NO",
+//                        new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.cancel();
+//                            }
+//                        }
+//                );
+//    }
+//        //Show AlertDialog
+//        androidx.appcompat.app.AlertDialog alertDialog = alertDialogBuilder.create();
+//        alertDialog.show();
+//    }
 
-    private void deleteCourse(Course course) {
-        courseReference.document(course.getId()).delete();
-    }
+        //   public void deleteCourse(Course course) {
+        //       courseReference.document(course.getId()).delete();
+        // }
 
 //    // popup
 //    public void viewCard(){
@@ -286,12 +303,18 @@ public class AdminCourseListActivity extends AppCompatActivity {
 //        super.onDestroy();
 //    }
 
-    /**
-     * Back button function
-     * @param view the current view
-     */
+        /**
+         * Back button function
+         //  * @param view the current view
+         */
     public void back(View view) {
         //Go back to previous activity
         this.finish();
+    }
+
+    public static void RemoveCourse(int remove){
+        courses.remove(remove);
+        courseList.setAdapter(adapter);
+
     }
 }
