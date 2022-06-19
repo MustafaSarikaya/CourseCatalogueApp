@@ -36,7 +36,7 @@ public class AdminAddCourseActivity extends Activity {
     EditText inputCourseName, inputCourseCode;
     TextView addCourseTitle;
     Button addButton;
-    Boolean isUpdate;
+    Boolean isUpdate = false;
     String courseId;
 
     Intent i;
