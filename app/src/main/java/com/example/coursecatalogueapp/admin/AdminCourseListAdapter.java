@@ -35,8 +35,6 @@ class AdminCourseListAdapter extends ArrayAdapter<Course> {
         LayoutInflater layoutInflater =(LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
         View listViewItem = layoutInflater.inflate(R.layout.course_list_row, null,true);
 
-//        TextView number = listViewItem.findViewById(R.id.number);
-//        number.setText(position + 1+ ".");
         TextView courseName = listViewItem.findViewById(R.id.courseName);
         TextView courseCode = listViewItem.findViewById(R.id.courseCode);
 
@@ -65,7 +63,6 @@ class AdminCourseListAdapter extends ArrayAdapter<Course> {
             @Override
             public void onClick(View v) {
                 AdminCourseListActivity.deleteCourse(course);
-                System.out.println("AĞĞĞĞĞĞĞĞ");
             }
         });
 
