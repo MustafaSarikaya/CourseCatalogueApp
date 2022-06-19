@@ -14,6 +14,9 @@ import android.widget.TextView;
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.UserController;
 import com.example.coursecatalogueapp.Utils.Function;
+import com.example.coursecatalogueapp.Utils.Utils;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -111,24 +114,60 @@ public class RegisterActivity extends Activity {
             final String password,
             final View view
     ) {
-        // Create user on Firebase auth
-        UserController.getInstance().signUp(name, email, role, password, getCurrentFocus(), new Function() {
-            @Override
-            public void f(Object... params) {
-                writeToSharedPrefs(params);
+        final SignUpError signUpError = validateInput(name, email, password);
 
-                Intent intent;
-                if (i.getExtras() == null) {
-                    intent = new Intent(RegisterActivity.this, MainActivity.class);
-                    //set the new task and clear flags, so that the user can't go back here
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    return;
-                } else {
-                    back(view);
+        //If there is an error
+        if (signUpError != SignUpError.None) {
+            //Show a snackbar with the error message
+            Snackbar mySnackbar = Snackbar.make(findViewById(R.id.registerPage), signUpError.toString(), BaseTransientBottomBar.LENGTH_SHORT);
+            //Add close button
+            mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //Close button does nothing really
                 }
-            }
-        });
+            });
+            //Clear text when snackbar is closed
+            mySnackbar.addCallback(new Snackbar.Callback() {
+                @Override
+                public void onDismissed(Snackbar snackbar, int event) {
+                    switch (signUpError) {
+                        case FieldsEmpty:
+                            break;
+                        case InvalidName:
+                            //Clears only the name entry
+                            inputFullname.getText().clear();
+                            break;
+                        case InvalidEmail:
+                            //Clears only the email entry
+                            inputEmail.getText().clear();
+                            break;
+                        case PasswordTooShort:
+                    }
+                }
+            });
+            //Show snackbar
+            mySnackbar.show();
+        } else {
+            // Create user on Firebase auth
+            UserController.getInstance().signUp(name, email, role, password, getCurrentFocus(), new Function() {
+                @Override
+                public void f(Object... params) {
+                    writeToSharedPrefs(params);
+
+                    Intent intent;
+                    if (i.getExtras() == null) {
+                        intent = new Intent(RegisterActivity.this, MainActivity.class);
+                        //set the new task and clear flags, so that the user can't go back here
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                        startActivity(intent);
+                        return;
+                    } else {
+                        back(view);
+                    }
+                }
+            });
+        }
     }
 
     private void writeToSharedPrefs(Object... params) {
@@ -145,6 +184,28 @@ public class RegisterActivity extends Activity {
         editor.putString(getString(R.string.user_uid_key), (String) params[3]);
         //Apply shared preferences changes
         editor.apply();
+    }
+
+    private SignUpError validateInput(String name, String email, String password) {
+        //Checks if any field is empty
+        if(name.isEmpty() || email.isEmpty() || password.isEmpty()) {
+            return SignUpError.FieldsEmpty;
+        }
+        //Checks if name is only composed of whitespaces
+        if(name.trim().length() == 0 || !Utils.isNameValid(name)){
+            return SignUpError.InvalidName;
+        }
+        //Validates Email
+        boolean validEmail = Utils.isEmailValid(email);
+        if(!validEmail) {
+            return SignUpError.InvalidEmail;
+        }
+        //Checks if password is long enough
+        if(password.length() < 6) {
+            return SignUpError.PasswordTooShort;
+        }
+        //Returns no error if all inputs are valid.
+        return SignUpError.None;
     }
 
     private void reload() { }

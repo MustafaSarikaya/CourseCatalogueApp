@@ -2,13 +2,14 @@ package com.example.coursecatalogueapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.TextView;
 
 import com.example.coursecatalogueapp.modules.User;
 
-public class InstructorMainActivity extends AppCompatActivity {
+public class InstructorMainActivity extends Activity {
 
     TextView pageTitle, loginStatus;
 
