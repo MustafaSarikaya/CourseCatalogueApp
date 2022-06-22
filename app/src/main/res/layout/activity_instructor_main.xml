@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/instructorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
     tools:context=".instructor.InstructorMainActivity">
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_alignBottom="@+id/_dynamic"
-
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="84dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="65dp"
-        android:padding="10dp" />
-
-
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbarInstructorMain"
@@ -36,72 +19,67 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <ExpandableListView
-        android:id="@+id/ExpListView"
-        android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="141dp"
-        android:layout_marginEnd="0dp" />
-
     <TextView
         android:id="@+id/instructorMainTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
         android:layout_marginStart="10dp"
         android:layout_marginTop="11dp"
         android:fontFamily="@font/roboto_condensed_bold"
         android:textColor="@color/white"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarInstructorMain" />
 
-    <TextView
-        android:id="@+id/loginStatusInstructor"
-        android:layout_width="332dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/toolbarInstructorMain"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="79dp"
-        android:layout_marginBottom="652dp"
-        android:fontFamily="@font/roboto"
-        android:textAlignment="center"
-        android:textSize="90sp" />
-
-    <ListView
-        android:id="@+id/listview"
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
         android:layout_width="match_parent"
-        android:layout_height="523dp"
+        android:layout_height="57dp"
+        android:layout_marginTop="2dp"
+        android:padding="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInstructorMain" >
 
-        android:layout_below="@+id/searchView"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="66dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="1dp"
-        android:clickable="true"
-        android:contextClickable="true"
-        android:focusable="true"
-        android:inputType="text"
+    </androidx.appcompat.widget.SearchView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView">
 
-    </ListView>
+        <ExpandableListView
+            android:id="@+id/ExpListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraint_toEndOf="parent"
+            android:divider="@android:color/darker_gray"
+            android:dividerHeight="0.5dp"
+            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft"/>
+
+        <ListView
+            android:id="@+id/listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="1dp"
+            android:clickable="true"
+            android:contextClickable="true"
+            android:focusable="true"
+            android:inputType="text">
+
+        </ListView>
+    </LinearLayout>
 
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
