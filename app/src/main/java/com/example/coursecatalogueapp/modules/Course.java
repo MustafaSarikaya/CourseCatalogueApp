@@ -2,7 +2,7 @@ package com.example.coursecatalogueapp.modules;
 
 public class Course {
 
-    private String courseCode, courseName, courseInfo, id;
+    private String courseCode, courseName, courseInfo, courseInstructor, id;
 
     public Course() {
         id = "";
@@ -37,6 +37,13 @@ public class Course {
     public String getCourseName(){
         return courseName;
     }
+
+    public  void setCourseInstructor(String courseProf) {
+        this.courseInstructor = courseProf;
+        // courseProf= new CourseProf(courseProf);}
+    }
+    public  String getCourseInstructor(){
+        return courseInstructor;}
 
     public void setCourseName(String courseName){
         this.courseName=courseName;

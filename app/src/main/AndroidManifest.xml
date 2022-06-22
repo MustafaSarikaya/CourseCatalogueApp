@@ -31,7 +31,7 @@
         <activity android:name=".admin.AdminCourseListActivity"/>
         <activity android:name=".StudentMainActivity"/>
         <activity android:name=".auth.MainActivity"/>
-        <activity android:name=".InstructorMainActivity"/>
+        <activity android:name=".instructor.InstructorMainActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"
