@@ -3,19 +3,25 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/layout/activity_admin_course_list.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/activity_instructor_main.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/child_instructor.xml" value="0.2424863387978142" />
-        <entry key="app/src/main/res/layout/course_list_row.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/courselist_instructor.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/courses_of_instructors.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/instructor_child_expandable.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_instructor_course_list.xml" value="0.18697916666666667" />
-        <entry key="app/src/main/res/layout/activity_instructor_main.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/child_instructor.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/course_list_row.xml" value="0.32155797101449274" />
-        <entry key="app/src/main/res/layout/exp_list_title.xml" value="0.42700729927007297" />
-        <entry key="app/src/main/res/layout/instructor_child_expandable.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/activity_admin_course_list.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/activity_instructor_main.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/child_instructor.xml" value="0.2424863387978142" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/course_list_row.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/courselist_instructor.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/courses_of_instructors.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/CourseCatalogueApp_SEG2105_Group6-main/app/src/main/res/layout/instructor_child_expandable.xml" value="0.25" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_admin_course_list.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_instructor_course_list.xml" value="0.18697916666666667" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_instructor_main.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_register.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_student_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/child_instructor.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/course_list_row.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/exp_list_title.xml" value="0.42700729927007297" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/instructor_child_expandable.xml" value="0.32155797101449274" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/list_row.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/popup.xml" value="0.36666666666666664" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/ic_baseline_done_24.xml" value="0.27" />
         <entry key="app/src/main/res/drawable/remove.xml" value="0.2985" />
@@ -32,7 +38,7 @@
         <entry key="app/src/main/res/layout/activity_admin_user_list.xml" value="0.2921715161479112" />
         <entry key="app/src/main/res/layout/activity_adminmainpage.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_instructor_list.xml" value="0.18439716312056736" />
-        <entry key="app/src/main/res/layout/activity_instructor_main.xml" value="0.40798187255859375" />
+        <entry key="app/src/main/res/layout/activity_instructor_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_instructors.xml" value="0.223731884057971" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.38812561035156257" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.275" />
@@ -42,7 +48,7 @@
         <entry key="app/src/main/res/layout/activity_student_list.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_student_list_activitiy.xml" value="0.32155797101449274" />
         <entry key="app/src/main/res/layout/activity_student_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/course_list_row.xml" value="0.4315741306436043" />
+        <entry key="app/src/main/res/layout/course_list_row.xml" value="0.15875613747954173" />
         <entry key="app/src/main/res/layout/instructor_add.xml" value="0.33" />
         <entry key="app/src/main/res/layout/list_row.xml" value="0.2657524487650986" />
         <entry key="app/src/main/res/layout/popup.xml" value="0.5666666666666667" />

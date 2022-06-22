@@ -6,8 +6,12 @@ import androidx.appcompat.widget.SearchView;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.coursecatalogueapp.R;
 //import com.example.coursecatalogueapp.admin.expandableListAdapter;
@@ -31,11 +35,11 @@ public class InstructorMainActivity extends Activity {
     List<Course> courses;
     SearchView search;
 
-    /**expandable List
+
      ExpandableListView expandableListView;
      ExpandableListAdapter expandableListAdapter;
-     HashMap<String,List<String>> expandableListDetail;
-     List<String> expendableListTitle;**/
+     List<Course> expandableListDetail;
+     String expendableListTitle;
     private FirebaseFirestore firestore;
     private static CollectionReference courseReference;
 
@@ -47,8 +51,34 @@ public class InstructorMainActivity extends Activity {
 
         // expandable List
 
+        expandableListDetail = new ArrayList<>();
+
+        expendableListTitle = "Selim";
+        expandableListAdapter = new exp_list_adapter(this,expandableListDetail,expendableListTitle);
 
 
+        expandableListView = findViewById(R.id.ExpListView);
+        expandableListView.setAdapter(expandableListAdapter);
+
+        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+            int lastExpandedPosition = -1;
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if(lastExpandedPosition != -1 && groupPosition != lastExpandedPosition){
+                    expandableListView.collapseGroup(lastExpandedPosition);
+                }
+                lastExpandedPosition = groupPosition;
+            }
+        });
+
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                String selected = expandableListAdapter.getChild(groupPosition,childPosition).toString();
+                Toast.makeText(InstructorMainActivity.this, "BOMBOM", Toast.LENGTH_SHORT).show();
+                return true;
+            }
+        });
 
         firestore = FirebaseFirestore.getInstance();
         courseReference = firestore.collection("courses");

@@ -1,9 +1,6 @@
 package com.example.coursecatalogueapp.instructor;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,11 +12,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.example.coursecatalogueapp.instructor.InstructorMainActivity;
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.modules.Course;
-
-import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -29,7 +23,7 @@ public class InstructorMainAdapter extends ArrayAdapter<Course> {
 
 
     public InstructorMainAdapter(Activity context, List<Course> courses) {
-        super(context, R.layout.activity_instructor_course_list, courses);
+        super(context, R.layout.instructor_course_row, courses);
         this.context = context;
         this.courses = courses;
     }
@@ -38,7 +32,7 @@ public class InstructorMainAdapter extends ArrayAdapter<Course> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View listViewItem = layoutInflater.inflate(R.layout.activity_instructor_course_list, null, true);
+        View listViewItem = layoutInflater.inflate(R.layout.instructor_course_row, null, true);
 
         TextView courseName = listViewItem.findViewById(R.id.courseName);
         TextView courseCode = listViewItem.findViewById(R.id.courseCode);
