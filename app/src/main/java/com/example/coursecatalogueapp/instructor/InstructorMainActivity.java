@@ -24,9 +24,8 @@ import java.util.List;
 
 public class InstructorMainActivity extends Activity {
 
-    TextView pageTitle, loginStatus;
+    TextView pageTitle;
     static String userName;
-    String   userRole;
     static InstructorMainAdapter adapter;
     ListView CourseList;
     List<Course> courses;
@@ -61,16 +60,12 @@ public class InstructorMainActivity extends Activity {
 
 
         pageTitle = findViewById(R.id.instructorMainTitle);
-        loginStatus = findViewById(R.id.loginStatusInstructor);
 
         SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
         userName = sharedPref.getString(getString(R.string.user_name_key), null);
-        userRole = sharedPref.getString(getString(R.string.user_role_key), null);
 
 
         pageTitle.setText("Welcome " + userName);
-        loginStatus.setText("Logged in as " + userRole);
-
 
     }
 
