@@ -1,14 +1,18 @@
 package com.example.coursecatalogueapp.instructor;
 
+import static com.example.coursecatalogueapp.instructor.Instructor_MyCourses.mycourses;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ExpandableListAdapter;
-import android.widget.ExpandableListView;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,20 +32,18 @@ import java.util.List;
 
 public class InstructorMainActivity extends Activity {
 
-    TextView pageTitle;
     static String userName;
     static InstructorMainAdapter adapter;
     ListView CourseList;
     List<Course> courses;
+    Button addCourses;
+   public static List<Course> myCourses;
     SearchView search;
 
 
-     ExpandableListView expandableListView;
-     ExpandableListAdapter expandableListAdapter;
-     List<Course> expandableListDetail;
-     String expendableListTitle;
     private FirebaseFirestore firestore;
-    private static CollectionReference courseReference;
+    private static CollectionReference courseReference, myCourseReference;
+
 
 
     @Override
@@ -49,55 +51,40 @@ public class InstructorMainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_instructor_main);
 
-        // expandable List
-
-        expandableListDetail = new ArrayList<>();
-
-        expendableListTitle = "Selim";
-        expandableListAdapter = new exp_list_adapter(this,expandableListDetail,expendableListTitle);
-
-
-        expandableListView = findViewById(R.id.ExpListView);
-        expandableListView.setAdapter(expandableListAdapter);
-
-        expandableListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-            int lastExpandedPosition = -1;
-            @Override
-            public void onGroupExpand(int groupPosition) {
-                if(lastExpandedPosition != -1 && groupPosition != lastExpandedPosition){
-                    expandableListView.collapseGroup(lastExpandedPosition);
-                }
-                lastExpandedPosition = groupPosition;
-            }
-        });
-
-        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
-                String selected = expandableListAdapter.getChild(groupPosition,childPosition).toString();
-                Toast.makeText(InstructorMainActivity.this, "BOMBOM", Toast.LENGTH_SHORT).show();
-                return true;
-            }
-        });
 
         firestore = FirebaseFirestore.getInstance();
         courseReference = firestore.collection("courses");
-
+        myCourseReference = firestore.collection("mycourses");
+        addCourses = findViewById(R.id.btn_myCourses);
         search = findViewById(R.id.searchView);
         CourseList = findViewById(R.id.listview);
+
         courses = new ArrayList<>();
+        myCourses = new ArrayList<>();
+
         getCourses();
 
 
-        pageTitle = findViewById(R.id.instructorMainTitle);
 
         SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
         userName = sharedPref.getString(getString(R.string.user_name_key), null);
 
+        addCourses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(InstructorMainActivity.this,Instructor_MyCourses.class);
+                startActivity(i);
 
-        pageTitle.setText("Welcome " + userName);
+            }
+        });
+
+
 
     }
+    public static List<Course> getMyCourses(){
+        return myCourses;
+    }
+
 
 
     public static String getuserName(){
@@ -115,7 +102,7 @@ public class InstructorMainActivity extends Activity {
                     String courseCode = doc.getString("courseCode");
                     String courseInstructor = doc.getString("courseInstructor");
                     String id = doc.getId();
-                    Course course = new Course(courseCode, courseName, id);
+                    Course course = new Course(courseCode, courseName, id,courseInstructor);
                     course.setCourseInstructor(courseInstructor);
 
                     courses.add(course);
@@ -125,6 +112,13 @@ public class InstructorMainActivity extends Activity {
 
         });
     }
+
+
+
+
+
+
+    // Search bar
     protected void onStart(){
         super.onStart();
         if (search!= null){
@@ -142,6 +136,7 @@ public class InstructorMainActivity extends Activity {
             });
         }
     }
+    //Search bar
     private void find(String str){
         List<Course> myList = new ArrayList<>();
         for(Course object: courses){
@@ -157,7 +152,7 @@ public class InstructorMainActivity extends Activity {
 
     }
     private void setUpList(final List<Course> courses, ListView listView){
-        adapter = new InstructorMainAdapter(InstructorMainActivity.this, courses);
+        adapter = new InstructorMainAdapter(InstructorMainActivity.this,courses);
         listView.setAdapter(adapter);
     }
 

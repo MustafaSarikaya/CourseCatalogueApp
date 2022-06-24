@@ -9,11 +9,13 @@ public class Course {
         courseName = "";
         courseCode = "";
         courseInfo = "";
+        courseInstructor="";
     }
 
-    public Course(String courseCode, String courseName, String id){
+    public Course(String courseCode, String courseName, String id,String courseInstructor){
         this.courseCode=courseCode;
         this.courseName=courseName;
+        this.courseInstructor = courseInstructor;
         this.id = id;
         courseInfo = "";
     }

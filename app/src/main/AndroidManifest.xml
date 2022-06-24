@@ -32,7 +32,7 @@
         <activity android:name=".StudentMainActivity"/>
         <activity android:name=".auth.MainActivity"/>
         <activity android:name=".instructor.InstructorMainActivity"/>
-
+        <activity android:name=".instructor.Instructor_MyCourses"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

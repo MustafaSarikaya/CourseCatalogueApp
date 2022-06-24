@@ -7,6 +7,7 @@
 
     <androidx.cardview.widget.CardView
 
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="false"
@@ -22,50 +23,27 @@
             android:baselineAligned="false"
             android:orientation="horizontal">
 
+
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="364dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
+
                 <TextView
                     android:id="@+id/courseCode"
-                    android:layout_width="150dp"
-                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
                 <TextView
                     android:id="@+id/courseName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1" />
-                <TextView
-                    android:id="@+id/ProfName"
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1" />
-            </LinearLayout>
-            <ImageView
-                android:id="@+id/courseUnassign"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:src="@drawable/remove" />
 
-            <ImageView
-                android:id="@+id/courseAssign"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="0.1"
-                android:focusable="false"
-                android:focusableInTouchMode="false"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/ic_baseline_add_circle_outline_24"
-                tools:ignore="ImageContrastCheck" />
+            </LinearLayout>
 
 
         </LinearLayout>

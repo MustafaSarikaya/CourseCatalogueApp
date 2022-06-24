@@ -35,50 +35,49 @@
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
-        android:layout_width="match_parent"
-        android:layout_height="57dp"
-        android:layout_marginTop="2dp"
+        android:layout_width="406dp"
+        android:layout_height="61dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:padding="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarInstructorMain" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolbarInstructorMain">
 
     </androidx.appcompat.widget.SearchView>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="2dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView">
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="409dp"
+        android:layout_height="461dp"
 
-        <ExpandableListView
-            android:id="@+id/ExpListView"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:divider="@android:color/darker_gray"
-            android:dividerHeight="0.5dp"
-            android:indicatorLeft="?android:attr/expandableListPreferredItemIndicatorLeft" />
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="96dp"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="true"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/instructorMainTitle"
+        tools:ignore="DuplicateSpeakableTextCheck">
 
-        <ListView
-            android:id="@+id/listview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+    </ListView>
 
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="65dp"
-            android:layout_marginEnd="0dp"
-            android:layout_marginBottom="1dp"
-            android:clickable="true"
-            android:contextClickable="true"
-            android:focusable="true"
-            android:inputType="text">
-
-        </ListView>
-    </LinearLayout>
+    <Button
+        android:id="@+id/btn_myCourses"
+        android:layout_width="184dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="8dp"
+        android:text="Add to your Courses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview"
+        tools:ignore="TouchTargetSizeCheck" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
