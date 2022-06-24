@@ -45,6 +45,12 @@
 
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/plusbutton"
+                android:layout_width="43dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_add_circle_outline_24"/>
+
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
