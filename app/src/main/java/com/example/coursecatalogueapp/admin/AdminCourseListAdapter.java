@@ -53,6 +53,7 @@ class AdminCourseListAdapter extends ArrayAdapter<Course> {
                 i.putExtra("courseName", course.getCourseName());
                 i.putExtra("courseCode",course.getCourseCode());
                 i.putExtra("courseId", course.getId());
+                i.putExtra("courseInstructor",course.getCourseInstructor());
                 context.startActivity(i);
             }
         });
