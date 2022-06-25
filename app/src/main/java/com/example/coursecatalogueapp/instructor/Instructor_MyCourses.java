@@ -40,15 +40,48 @@ public class Instructor_MyCourses extends Activity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_courses);
-        // firestore = FirebaseFirestore.getInstance();
-        //courseReference = firestore.collection("courses");
+        firestore = FirebaseFirestore.getInstance();
+        courseReference = firestore.collection("mycourses");
         listView = findViewById(R.id.listView);
+        mycourses=new ArrayList<>();
 
-        mycourses = new ArrayList<>();
-        setUpList(mycourses, listView);
+      //  setUpList(mycourses, listView);
+        getMyCourses();
 
 
     }
+
+    public void getMyCourses(){
+        courseReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                mycourses.clear();
+                listView.setAdapter(adapter);
+                for(QueryDocumentSnapshot doc: value) {
+                    String courseName = doc.getString("courseName");
+                    String courseCode = doc.getString("courseCode");
+                    String courseInstructor = doc.getString("courseInstructor");
+                    String id = doc.getId();
+                    Course course = new Course(courseCode, courseName, id,courseInstructor);
+                    course.setCourseInstructor(courseInstructor);
+                    String username = InstructorMainActivity.getuserName();
+
+                    if(courseInstructor.contains(username)) {
+
+                        mycourses.add(course);
+                    }
+                }
+
+                setUpList(mycourses, listView);
+            }
+
+        });
+    }
+//    public static void addCourse(Course course) {
+//        mycourses.add(course);
+//
+//
+//    }
     private void setUpList(final List<Course> courses, ListView listView){
         adapter = new my_courses_adapter(Instructor_MyCourses.this,mycourses);
         listView.setAdapter(adapter);

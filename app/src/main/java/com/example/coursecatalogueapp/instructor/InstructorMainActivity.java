@@ -1,7 +1,5 @@
 package com.example.coursecatalogueapp.instructor;
 
-import static com.example.coursecatalogueapp.instructor.Instructor_MyCourses.mycourses;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.SearchView;
 
@@ -10,12 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.coursecatalogueapp.R;
 //import com.example.coursecatalogueapp.admin.expandableListAdapter;
@@ -37,12 +31,12 @@ public class InstructorMainActivity extends Activity {
     ListView CourseList;
     List<Course> courses;
     Button addCourses;
-   public static List<Course> myCourses;
+//   public static List<Course> myCourses;
     SearchView search;
 
 
     private FirebaseFirestore firestore;
-    private static CollectionReference courseReference, myCourseReference;
+    private static CollectionReference courseReference;
 
 
 
@@ -54,13 +48,12 @@ public class InstructorMainActivity extends Activity {
 
         firestore = FirebaseFirestore.getInstance();
         courseReference = firestore.collection("courses");
-        myCourseReference = firestore.collection("mycourses");
         addCourses = findViewById(R.id.btn_myCourses);
         search = findViewById(R.id.searchView);
         CourseList = findViewById(R.id.listview);
 
         courses = new ArrayList<>();
-        myCourses = new ArrayList<>();
+   //     myCourses = new ArrayList<>();
 
         getCourses();
 
@@ -81,15 +74,14 @@ public class InstructorMainActivity extends Activity {
 
 
     }
-    public static List<Course> getMyCourses(){
-        return myCourses;
-    }
+
 
 
 
     public static String getuserName(){
         return userName;
     }
+
 
     public void getCourses(){
         courseReference.addSnapshotListener(new EventListener<QuerySnapshot>() {
@@ -152,7 +144,8 @@ public class InstructorMainActivity extends Activity {
 
     }
     private void setUpList(final List<Course> courses, ListView listView){
-        adapter = new InstructorMainAdapter(InstructorMainActivity.this,courses);
+
+        adapter = new InstructorMainAdapter(InstructorMainActivity.this,courses,firestore,courseReference);
         listView.setAdapter(adapter);
     }
 

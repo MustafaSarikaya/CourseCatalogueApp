@@ -39,8 +39,6 @@ public class AdminUserListActivity extends AppCompatActivity {
     String userRole;
     Intent intent;
 
-//    private TextView isim2, numara2,email2;
-//    private Button ok_pop2;
 //
 //    private AlertDialog.Builder dialogBuilder;
 //    private AlertDialog dialog;
