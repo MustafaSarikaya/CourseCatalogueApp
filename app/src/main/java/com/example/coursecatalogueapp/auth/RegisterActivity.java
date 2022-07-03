@@ -59,7 +59,7 @@ public class RegisterActivity extends Activity {
         spinnerRoles = findViewById(R.id.roleSpinnerInput);
         registerButton = findViewById(R.id.registerBtn);
         spinnerText = findViewById(R.id.roleSpinnerText);
-        pageTitle = findViewById(R.id.registerTitle);
+        pageTitle = findViewById(R.id.InstructorAssign);
         loginLink = findViewById(R.id.loginLink);
         i = getIntent();
         if (i.getExtras() != null) {

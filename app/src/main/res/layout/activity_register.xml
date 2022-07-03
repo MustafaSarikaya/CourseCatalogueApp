@@ -20,15 +20,6 @@
 
     <LinearLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:flow_horizontalAlign="center"
-        app:flow_verticalAlign="center">
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="2dp"
@@ -163,7 +154,7 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/registerTitle"
+        android:id="@+id/InstructorAssign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"

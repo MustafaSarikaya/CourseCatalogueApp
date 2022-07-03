@@ -56,10 +56,25 @@
     <string name="seg2105">SEG2105</string>
     <string name="intro_to_software_engineering">Intro to Software Engineering</string>
     <string name="add_course">Add Course</string>
+    <string name="course_description">Course Description</string>
+    <string name="enter_course_description">Enter Course Description</string>
+    <string name="instructor_assign_title">Assign Course</string>
+    <string name="course_capacity">Course Capacity</string>
+    <string name="enter_course_capacity">Enter course capacity</string>
+    <string name="first_lecture_day">Select First Lecture Day and Time</string>
+    <string name="enter_time">Enter Time</string>
+    <string name="second_lecture_day">Select Second Lecture Day and Time</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>
         <item>Student</item>
     </string-array>
-
+    <string-array name="week_days">
+        <item>Select</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
 </resources>
