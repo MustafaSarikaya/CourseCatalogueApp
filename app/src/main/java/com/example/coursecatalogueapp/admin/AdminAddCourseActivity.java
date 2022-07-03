@@ -29,7 +29,7 @@ public class AdminAddCourseActivity extends Activity {
 
     //Declare variables
     private String courseName;
-    private String courseCode;
+    private String courseCode, courseInstructor;
     private FirebaseFirestore db;
     private CollectionReference coursesReference;
     //Declare UI elements
@@ -72,6 +72,7 @@ public class AdminAddCourseActivity extends Activity {
                 //get the submitted form data
                 courseName = inputCourseName.getText().toString();
                 courseCode = inputCourseCode.getText().toString();
+
 
                 if (isUpdate) {
                     updateCourse(courseCode, courseName, courseId, getCurrentFocus());

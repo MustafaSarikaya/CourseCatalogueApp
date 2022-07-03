@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.coursecatalogueapp.InstructorMainActivity;
+import com.example.coursecatalogueapp.instructor.InstructorMainActivity;
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.StudentMainActivity;
-import com.example.coursecatalogueapp.UserController;
 import com.example.coursecatalogueapp.admin.AdminMainActivity;
-import com.example.coursecatalogueapp.modules.User;
+import com.example.coursecatalogueapp.instructor.Instructor_MyCourses;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;

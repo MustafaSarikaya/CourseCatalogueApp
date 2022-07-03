@@ -95,12 +95,13 @@ public class AdminCourseListActivity extends AppCompatActivity {
                               //Get the basic user data from the document
                               String courseName = doc.getString("courseName");
                               String courseCode = doc.getString("courseCode");
+                              String courseInstructor = doc.getString("courseInstructor");
                               String id = doc.getId();
                               //Create an course Object
-                              Course course = new Course(courseCode, courseName, id);
+                            Course course = new Course(courseCode, courseName, courseInstructor,id);
 
                               //Add the course to the list
-                              courses.add(course);
+                           courses.add(course);
                           }
                       }
                       //Set up the list in the UI
