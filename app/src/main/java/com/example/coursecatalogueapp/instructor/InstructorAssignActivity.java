@@ -6,17 +6,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
 import com.example.coursecatalogueapp.R;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -25,8 +30,7 @@ public class InstructorAssignActivity extends Activity {
     private static final String TAG = "InstructorAssign";
 
     //Declare variables
-    private String courseDescription;
-    private String courseCapacity;
+    private String courseDescription, courseCapacity, courseId, lecture1Day, lecture2Day, lecture1Time, lecture2Time;
     private FirebaseFirestore db;
     private CollectionReference coursesReference;
     //Declare UI elements
@@ -36,7 +40,6 @@ public class InstructorAssignActivity extends Activity {
     TextView assignCourseTitle;
     Button assignButton;
     Boolean isUpdate;
-    String courseId;
 
     Intent i;
 
@@ -49,26 +52,50 @@ public class InstructorAssignActivity extends Activity {
         db = FirebaseFirestore.getInstance();
         coursesReference = db.collection("courses");
 
+        //Initialize spinners
+        ArrayList weekDays = new ArrayList(Arrays.asList("Monday", "Tuesday", "Wednesday", "Thursday", "Friday"));
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, weekDays);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLectureDay1 = findViewById(R.id.firstLectureSpinnerInput);
+        spinnerLectureDay1.setAdapter(adapter);
+
+        ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(
+                this, android.R.layout.simple_spinner_item, weekDays);
+
+        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerLectureDay2 = findViewById(R.id.secondLectureSpinnerInput);
+        spinnerLectureDay2.setAdapter(adapter2);
+        //
+
         //Initialize UI elements
         inputCourseDescription = findViewById(R.id.courseDescriptionInput);
         inputCourseCapacity = findViewById(R.id.courseCapacityInput);
         assignButton = findViewById(R.id.assignBtn);
         assignCourseTitle = findViewById(R.id.instructorAssignTitle);
-        spinnerLectureDay1 = findViewById(R.id.firstLectureSpinnerInput);
-        spinnerLectureDay2 = findViewById(R.id.secondLectureSpinnerInput);
         inputTime1 = findViewById(R.id.timePickerInput1);
         inputTime2 = findViewById(R.id.timePickerInput2);
+        //
 
+        // Check if we are updating a course
         i = getIntent();
-        if (i.getExtras() != null) {
-            isUpdate = i.getStringExtra("TAG").equals("update");
+        isUpdate = i.getStringExtra("TAG").equals("update");
+        courseId = i.getStringExtra("courseId");
+        if (isUpdate) {
+            // fill input fields
             assignButton.setText(R.string.update);
             assignCourseTitle.setText(R.string.update_title);
-            inputCourseCapacity.setText(i.getStringExtra("courseCode"));
-            inputCourseDescription.setText(i.getStringExtra("courseName"));
-            courseId = i.getStringExtra("courseId");
+            inputCourseCapacity.setText(i.getStringExtra("courseCapacity"));
+            inputCourseDescription.setText(i.getStringExtra("courseDescription"));
+            spinnerLectureDay1.setSelection(weekDays.indexOf(i.getStringExtra("lecture1Day")));
+            spinnerLectureDay2.setSelection(weekDays.indexOf(i.getStringExtra("lecture2Day")));
+            inputTime1.setText(i.getStringExtra("lecture2Time"));
+            inputTime2.setText(i.getStringExtra("lecture2Time"));
         }
 
+        //Time Picker Click Listener
         inputTime1.setInputType(InputType.TYPE_NULL);
         inputTime1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,13 +108,15 @@ public class InstructorAssignActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                inputTime1.setText(sHour + ":" + sMinute);
+                                lecture1Time = sHour + ":" + sMinute;
+                                inputTime1.setText(lecture1Time);
                             }
                         }, hour, minutes, true);
                 picker.show();
             }
         });
 
+        //Time Picker Click Listener
         inputTime2.setInputType(InputType.TYPE_NULL);
         inputTime2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -100,7 +129,8 @@ public class InstructorAssignActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                inputTime1.setText(sHour + ":" + sMinute);
+                                lecture2Time = sHour + ":" + sMinute;
+                                inputTime2.setText(lecture2Time);
                             }
                         }, hour, minutes, true);
                 picker.show();
@@ -113,19 +143,29 @@ public class InstructorAssignActivity extends Activity {
                 //get the submitted form data
                 courseDescription = inputCourseDescription.getText().toString();
                 courseCapacity = inputCourseCapacity.getText().toString();
-                String Lecture1Day = spinnerLectureDay1.getSelectedItem().toString();
-                String Lecture2Day = spinnerLectureDay2.getSelectedItem().toString();
+                lecture1Day = spinnerLectureDay1.getSelectedItem().toString();
+                lecture2Day = spinnerLectureDay2.getSelectedItem().toString();
 
                 if (isUpdate) {
                     updateCourseInfo(
                             courseDescription,
                             courseCapacity,
                             courseId,
-                            Lecture1Day,
-                            Lecture2Day,
+                            lecture1Day,
+                            lecture2Day,
+                            lecture1Time,
+                            lecture2Time,
                             getCurrentFocus());
                 } else {
-                    createCourse(courseDescription, courseCapacity, getCurrentFocus());
+                    createCourse(
+                            courseDescription,
+                            courseCapacity,
+                            courseId,
+                            lecture1Day,
+                            lecture2Day,
+                            lecture1Time,
+                            lecture2Time,
+                            getCurrentFocus());
                 }
             }
         });
@@ -135,31 +175,47 @@ public class InstructorAssignActivity extends Activity {
             final String courseId,
             final String courseDescription,
             final String courseCapacity,
-            final String Lecture1Day,
-            final String Lecture2Day,
-
+            final String lecture1Day,
+            final String lecture2Day,
+            final String lecture1Time,
+            final String lecture2Time,
             final View view
     ) {
         Map<String, Object> courseInfo = new HashMap<>();
-        courseInfo.put("courseName", courseDescription);
-        courseInfo.put("courseCode", courseCapacity);
+        courseInfo.put("courseDescription", courseDescription);
+        courseInfo.put("courseCapacity", courseCapacity);
+        courseInfo.put("lecture1Day", lecture1Day);
+        courseInfo.put("lecture1Time", lecture1Time);
+        courseInfo.put("lecture2Day", lecture2Day);
+        courseInfo.put("lecture2Time", lecture2Time);
 
         coursesReference.document(courseId).set(courseInfo);
         back(view);
     }
 
     public void createCourse(
-            final String courseName,
-            final String courseCode,
+            final String courseId,
+            final String courseDescription,
+            final String courseCapacity,
+            final String lecture1Day,
+            final String lecture2Day,
+            final String lecture1Time,
+            final String lecture2Time,
             final View view
     ) {
         //Create a map with the data to write to cloud firestore
         Map<String, Object> courseInfo = new HashMap<>();
-        courseInfo.put("courseName", courseName);
-        courseInfo.put("courseCode", courseCode);
+        courseInfo.put("courseDescription", courseDescription);
+        courseInfo.put("courseCapacity", courseCapacity);
+        courseInfo.put("lecture1Day", lecture1Day);
+        courseInfo.put("lecture1Time", lecture1Time);
+        courseInfo.put("lecture2Day", lecture2Day);
+        courseInfo.put("lecture2Time", lecture2Time);
 
-        coursesReference.add(courseInfo);
-        back(view);
+        coursesReference.document(courseId).set(courseInfo, SetOptions.merge());
+        Toast.makeText(InstructorAssignActivity.this, "Course added to your schedule!", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(InstructorAssignActivity.this, InstructorMyCourses.class);
+        startActivity(i);
     }
 
 

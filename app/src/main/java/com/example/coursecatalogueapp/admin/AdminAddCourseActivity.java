@@ -106,6 +106,7 @@ public class AdminAddCourseActivity extends Activity {
         Map<String, Object> courseInfo = new HashMap<>();
         courseInfo.put("courseName", courseName);
         courseInfo.put("courseCode", courseCode);
+        courseInfo.put("courseInstructor", "");
 
         coursesReference.add(courseInfo);
         back(view);

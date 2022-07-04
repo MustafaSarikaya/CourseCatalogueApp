@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp.instructor;
+package com.example.coursecatalogueapp.instructor.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -57,10 +57,6 @@ public class my_courses_adapter extends ArrayAdapter<Course> {
 
             }
         });
-
-
-
-
         return listViewItem;
 
     }
