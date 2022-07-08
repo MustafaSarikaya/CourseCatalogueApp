@@ -1,16 +1,14 @@
 package com.example.coursecatalogueapp.instructor;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 
 import com.example.coursecatalogueapp.R;
-import com.example.coursecatalogueapp.instructor.adapters.my_courses_adapter;
+import com.example.coursecatalogueapp.instructor.adapters.InstructorMyCoursesAdapter;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
@@ -26,7 +24,7 @@ public class InstructorMyCourses extends Activity {
     ListView listView;
 
     public List<Course> mycourses;
-    static my_courses_adapter adapter;
+    static InstructorMyCoursesAdapter adapter;
     String userId;
 
     private FirebaseFirestore firestore;
@@ -35,7 +33,7 @@ public class InstructorMyCourses extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_courses);
+        setContentView(R.layout.activity_instructor_my_courses);
         firestore = FirebaseFirestore.getInstance();
         courseReference = firestore.collection("courses");
         listView = findViewById(R.id.listView);
@@ -84,7 +82,7 @@ public class InstructorMyCourses extends Activity {
     }
 
     private void setUpList(final List<Course> courses, ListView listView){
-        adapter = new my_courses_adapter(InstructorMyCourses.this,mycourses);
+        adapter = new InstructorMyCoursesAdapter(InstructorMyCourses.this,mycourses);
         listView.setAdapter(adapter);
     }
 
