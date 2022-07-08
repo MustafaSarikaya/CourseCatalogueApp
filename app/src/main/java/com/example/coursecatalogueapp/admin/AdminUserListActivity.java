@@ -5,18 +5,16 @@ import static android.app.ProgressDialog.show;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.admin.adapters.AdminUserListAdapter;
 import com.example.coursecatalogueapp.auth.RegisterActivity;
 import com.example.coursecatalogueapp.modules.Instructor;
 import com.example.coursecatalogueapp.modules.Student;

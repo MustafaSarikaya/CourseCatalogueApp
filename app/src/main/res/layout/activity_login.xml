@@ -34,7 +34,7 @@
         app:layout_constraintTop_toTopOf="@+id/toolbar">
 
         <TextView
-            android:id="@+id/registerTitle"
+            android:id="@+id/InstructorAssign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_condensed_bold"

@@ -1,34 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/instructorMyCoursesLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".instructor.Instructor_MyCourses"
-    >
+    android:background="@color/white"
+    tools:context=".instructor.InstructorMainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbarInstructorMyCourses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/instructorMyCoursesTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="11dp"
+        android:fontFamily="@font/roboto_condensed_bold"
+        android:text="@string/instructor_my_courses"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/toolbarInstructorMyCourses" />
+
 
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
-        android:layout_height="638dp"
+        android:layout_height="0dp"
         android:layout_alignParentEnd="true"
-
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbarInstructorMyCourses"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         android:choiceMode="multipleChoice" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="262dp"
-        android:layout_height="81dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="91dp"
-        android:layout_marginTop="12dp"
-        android:text="MY COURSES"
-        android:textAlignment="textStart"
-        android:textSize="34sp" />
-
-
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

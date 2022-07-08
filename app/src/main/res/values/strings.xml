@@ -8,19 +8,9 @@
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
-    <string name="name2">Name2</string>
-    <string name="name3">Name3</string>
-    <string name="name4">Name4</string>
-    <string name="name5">Name5</string>
-    <string name="name7">Name7</string>
-    <string name="name8">Name8</string>
-    <string name="name9">Name9</string>
-    <string name="name10">Name10</string>
     <string name="submit">Submit</string>
     <string name="students">Students</string>
     <string name="instructors">Instructors</string>
-    <string name="name6">Name6</string>
-    <string name="name1">Name1</string>
     <string name ="done">done</string>
     <string name="courses">Courses</string>
     <string name="instructorList">Instructors</string>
@@ -30,7 +20,7 @@
     <string name="addStudent">Add Student</string>
     <string name="Add">ADD</string>
     <string name="name">Name</string>
-    <string name="update_title">Update title</string>
+    <string name="update_title">Update Course</string>
     <string name="update">Update</string>
     <string name="register_here_if_you_don_t_have_an_account"><u>Register here if you don\'t have an account</u></string>
     <string name="or_login_instead"><u>Or Login instead</u></string>
@@ -56,10 +46,30 @@
     <string name="seg2105">SEG2105</string>
     <string name="intro_to_software_engineering">Intro to Software Engineering</string>
     <string name="add_course">Add Course</string>
+    <string name="course_description">Course Description</string>
+    <string name="enter_course_description">Enter Course Description</string>
+    <string name="instructor_assign_title">Assign Course</string>
+    <string name="course_capacity">Course Capacity</string>
+    <string name="enter_course_capacity">Enter course capacity</string>
+    <string name="first_lecture_day">Select First Lecture Day and Time</string>
+    <string name="enter_time">Enter Time</string>
+    <string name="second_lecture_day">Select Second Lecture Day and Time</string>
+    <string name="go_to_my_courses">Go to My Courses</string>
+    <string name="course_name_label">Course Name:</string>
+    <string name="course_code_label">Course Code:</string>
+    <string name="instructor_label">Instructor:</string>
+    <string name="instructor_my_courses">My Courses</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>
         <item>Student</item>
     </string-array>
-
+    <string-array name="week_days">
+        <item>Select</item>
+        <item>Monday</item>
+        <item>Tuesday</item>
+        <item>Wednesday</item>
+        <item>Thursday</item>
+        <item>Friday</item>
+    </string-array>
 </resources>

@@ -5,18 +5,16 @@ import static android.app.ProgressDialog.show;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.admin.adapters.AdminCourseListAdapter;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
@@ -95,13 +93,12 @@ public class AdminCourseListActivity extends AppCompatActivity {
                               //Get the basic user data from the document
                               String courseName = doc.getString("courseName");
                               String courseCode = doc.getString("courseCode");
-                              String courseInstructor = doc.getString("courseInstructor");
                               String id = doc.getId();
                               //Create an course Object
-                            Course course = new Course(courseCode, courseName, courseInstructor,id);
+                              Course course = new Course(courseCode, courseName,id);
 
                               //Add the course to the list
-                           courses.add(course);
+                              courses.add(course);
                           }
                       }
                       //Set up the list in the UI

@@ -168,33 +168,33 @@ public class LogInActivity extends Activity {
 
     }
 
-        /**
-         * Validates the inputs of login page
-         * @param email the email to validate
-         * @param password the password to validate
-         * @return the LoginError value for the given inputs.
-         */
-        private LoginError validateInput(String email, String password) {
-            //Checks if any field is empty
-            if(email.isEmpty() || password.isEmpty()) {
-                return LoginError.FieldsEmpty;
-            }
-            if(email.compareTo("admin") == 0) {
-                //This should only happen when the admin password is wrong.
-                return LoginError.InvalidAdminLogin;
-            }
-            //Validates Email
-            boolean validEmail = Utils.isEmailValid(email);
-            if(!validEmail) {
-                return LoginError.EmailInvalid;
-            }
-            //Checks if password is long enough
-            if(password.length() < 6) {
-                return LoginError.PasswordTooShort;
-            }
-            //Returns no error message if inputs are valid.
-            return LoginError.None;
+    /**
+     * Validates the inputs of login page
+     * @param email the email to validate
+     * @param password the password to validate
+     * @return the LoginError value for the given inputs.
+     */
+    private LoginError validateInput(String email, String password) {
+        //Checks if any field is empty
+        if(email.isEmpty() || password.isEmpty()) {
+            return LoginError.FieldsEmpty;
         }
+        if(email.compareTo("admin") == 0) {
+            //This should only happen when the admin password is wrong.
+            return LoginError.InvalidAdminLogin;
+        }
+        //Validates Email
+        boolean validEmail = Utils.isEmailValid(email);
+        if(!validEmail) {
+            return LoginError.EmailInvalid;
+        }
+        //Checks if password is long enough
+        if(password.length() < 6) {
+            return LoginError.PasswordTooShort;
+        }
+        //Returns no error message if inputs are valid.
+        return LoginError.None;
+    }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
