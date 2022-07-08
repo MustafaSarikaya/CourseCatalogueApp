@@ -13,7 +13,10 @@ import android.widget.TextView;
 
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.Utils.Function;
+import com.example.coursecatalogueapp.Utils.Utils;
 import com.example.coursecatalogueapp.modules.Course;
+import com.google.android.material.snackbar.BaseTransientBottomBar;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -72,12 +75,26 @@ public class AdminAddCourseActivity extends Activity {
                 //get the submitted form data
                 courseName = inputCourseName.getText().toString();
                 courseCode = inputCourseCode.getText().toString();
+                final String loginError = validateInput(courseName, courseCode);
 
-
-                if (isUpdate) {
-                    updateCourse(courseCode, courseName, courseId, getCurrentFocus());
+                //If there is an error
+                if(!loginError.equals("")) {
+                    //Show a snackbar with the error message
+                    Snackbar mySnackbar = Snackbar.make(findViewById(R.id.adminAddCourseLayout), loginError, BaseTransientBottomBar.LENGTH_SHORT);
+                    //Add close button
+                    mySnackbar.setAction("CLOSE", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                        }
+                    });
+                    //Show snackbar
+                    mySnackbar.show();
                 } else {
-                    createCourse(courseName, courseCode, getCurrentFocus());
+                    if (isUpdate) {
+                        updateCourse(courseCode, courseName, courseId, getCurrentFocus());
+                    } else {
+                        createCourse(courseName, courseCode, getCurrentFocus());
+                    }
                 }
             }
         });
@@ -116,6 +133,21 @@ public class AdminAddCourseActivity extends Activity {
     private void reload() { }
 
     private void updateUI(FirebaseUser user) { }
+
+    /**
+     *
+     * @param courseName
+     * @param courseCode
+     * @return
+     */
+    private String validateInput(String courseName, String courseCode) {
+        //Checks if any field is empty
+        if(courseName.isEmpty() || courseCode.isEmpty()) {
+            return "One or more required fields are empty. ";
+        }
+        //Returns no error message if inputs are valid.
+        return "";
+    }
 
     /**
      * Back button function

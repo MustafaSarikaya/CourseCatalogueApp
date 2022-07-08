@@ -97,6 +97,8 @@ public class InstructorMainActivity extends Activity {
         courseReference.orderBy("courseInstructor").addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                courses.clear();
+                courseList.setAdapter(adapter);
                 for(QueryDocumentSnapshot doc: value) {
                     String courseName = doc.getString("courseName");
                     String courseCode = doc.getString("courseCode");

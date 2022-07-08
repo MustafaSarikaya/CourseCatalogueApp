@@ -25,6 +25,17 @@ public class Utils {
         return name.matches("^[a-zA-Z\\s]*$");
     }
 
+    public static boolean isTimeValid(String time) { return time.matches("^([0-9]|0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$");}
+
+    public static boolean isIntValid(String integer) {
+        try {
+            Integer.parseInt(integer);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
+    }
+
     /**
      * Shows snackbar with given message. The snackbar has a close button, which does nothing.
      * @param message the message to show.

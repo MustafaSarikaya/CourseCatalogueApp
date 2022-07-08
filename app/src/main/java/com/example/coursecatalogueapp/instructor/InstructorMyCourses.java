@@ -1,8 +1,10 @@
 package com.example.coursecatalogueapp.instructor;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -85,4 +87,5 @@ public class InstructorMyCourses extends Activity {
         adapter = new my_courses_adapter(InstructorMyCourses.this,mycourses);
         listView.setAdapter(adapter);
     }
+
 }

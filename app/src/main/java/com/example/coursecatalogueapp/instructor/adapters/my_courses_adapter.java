@@ -19,8 +19,11 @@ import com.example.coursecatalogueapp.instructor.InstructorAssignActivity;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class my_courses_adapter extends ArrayAdapter<Course> {
     private Activity context;
@@ -73,9 +76,17 @@ public class my_courses_adapter extends ArrayAdapter<Course> {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                courseReference.document(course.getId()).delete();
-                Toast.makeText(context, "Course deleted from your schedule", Toast.LENGTH_SHORT).show();
+                Map<String, Object> courseInfo = new HashMap<>();
+                courseInfo.put("courseDescription", "");
+                courseInfo.put("courseCapacity", "");
+                courseInfo.put("lecture1Day", "");
+                courseInfo.put("lecture1Time", "");
+                courseInfo.put("lecture2Day", "");
+                courseInfo.put("lecture2Time", "");
+                courseInfo.put("courseInstructor", "");
 
+                courseReference.document(course.getId()).set(courseInfo, SetOptions.merge());
+                Toast.makeText(context, "Course deleted from your schedule", Toast.LENGTH_SHORT).show();
             }
         });
         return listViewItem;
