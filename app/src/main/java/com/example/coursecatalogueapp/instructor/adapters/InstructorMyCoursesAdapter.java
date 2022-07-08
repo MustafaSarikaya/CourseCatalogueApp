@@ -25,14 +25,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class my_courses_adapter extends ArrayAdapter<Course> {
+public class InstructorMyCoursesAdapter extends ArrayAdapter<Course> {
     private Activity context;
     static List<Course> mycourses;
 
     private FirebaseFirestore firestore;
     private static CollectionReference courseReference;
 
-    public my_courses_adapter(Activity context, List<Course> mycourses) {
+    public InstructorMyCoursesAdapter(Activity context, List<Course> mycourses) {
         super(context, R.layout.course_list_row, mycourses);
         this.context = context;
         this.mycourses = mycourses;
