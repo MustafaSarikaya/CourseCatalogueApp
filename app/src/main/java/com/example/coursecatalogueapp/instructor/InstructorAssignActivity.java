@@ -104,7 +104,15 @@ public class InstructorAssignActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                lecture1Time = sHour + ":" + sMinute;
+                                lecture1Time = sHour + ":";// + sMinute
+                                if(sHour<10){
+                                    lecture1Time = "0"+lecture1Time;
+                                }
+                                if(sMinute<10){
+                                    lecture1Time = lecture1Time+"0"+sMinute;
+                                }else{
+                                    lecture1Time = lecture1Time+sMinute;
+                                }
                                 inputTime1.setText(lecture1Time);
                             }
                         }, hour, minutes, true);
@@ -125,7 +133,15 @@ public class InstructorAssignActivity extends Activity {
                         new TimePickerDialog.OnTimeSetListener() {
                             @Override
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
-                                lecture2Time = sHour + ":" + sMinute;
+                                lecture2Time = sHour + ":";// + sMinute
+                                if(sHour<10){
+                                    lecture2Time = "0"+lecture2Time;
+                                }
+                                if(sMinute<10){
+                                    lecture2Time = lecture2Time+"0"+sMinute;
+                                }else{
+                                    lecture2Time = lecture2Time+sMinute;
+                                }
                                 inputTime2.setText(lecture2Time);
                             }
                         }, hour, minutes, true);
