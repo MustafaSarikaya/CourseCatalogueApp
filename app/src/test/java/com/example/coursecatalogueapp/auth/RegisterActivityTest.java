@@ -28,5 +28,4 @@ public class RegisterActivityTest {
         assertEquals(bla.validateInputForTesting(), SignUpError.None);
     }
 
-
 }
