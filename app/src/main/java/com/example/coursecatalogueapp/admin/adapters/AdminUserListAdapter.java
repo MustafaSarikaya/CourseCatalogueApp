@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp.admin;
+package com.example.coursecatalogueapp.admin.adapters;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,12 +13,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.admin.AdminUserListActivity;
 import com.example.coursecatalogueapp.modules.Course;
 import com.example.coursecatalogueapp.modules.User;
 
 import java.util.List;
 
-class AdminUserListAdapter extends ArrayAdapter<User> {
+public class AdminUserListAdapter extends ArrayAdapter<User> {
     private Activity context;
     List<User> accounts;
 
