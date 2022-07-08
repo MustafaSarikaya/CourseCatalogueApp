@@ -36,6 +36,20 @@ public class LogInActivity extends Activity {
     TextView registerLink;
     Button loginButton;
 
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+    //This part is for testing purpose only
+
+    LogInActivity(String email, String password){
+        this.email = email;
+        this.password = password;
+    }
+
+    public LoginError validateInputForTesting(){
+        return validateInput(email, password);
+    }
+
+    ///////////////////////////////////////////////////////////////////////////////////////////////
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
