@@ -24,10 +24,11 @@
 
             <ImageView
                 android:id="@+id/imageView"
-                android:layout_width="20dp"
+                android:layout_width="35dp"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/courses"
-                app:srcCompat="@drawable/arrow_right" />
+                android:src="@drawable/arrow_right" />
+
 
             <LinearLayout
                 android:layout_width="0dp"

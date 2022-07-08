@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +53,7 @@ public class InstructorMainAdapter extends ArrayAdapter<Course> {
         TextView courseName = listViewItem.findViewById(R.id.courseName);
         TextView courseCode = listViewItem.findViewById(R.id.courseCode);
         TextView courseInstructor = listViewItem.findViewById(R.id.courseInstructor);
+        ImageView imageView = listViewItem.findViewById(R.id.imageView);
 
         ImageButton plusButton = listViewItem.findViewById(R.id.plusbutton);
         Course course = courses.get(position);
