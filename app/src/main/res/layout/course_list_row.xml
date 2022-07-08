@@ -40,24 +40,24 @@
                 android:id="@+id/courseEditBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
+                android:layout_weight="0.01"
                 android:contentDescription="update icon"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 android:src="@drawable/ic_baseline_edit_24" />
 
             <ImageButton
                 android:id="@+id/courseDeleteBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_weight="0.1"
+                android:layout_weight="0.01"
                 android:contentDescription="delete icon"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
                 android:src="@drawable/remove" />
 
         </LinearLayout>

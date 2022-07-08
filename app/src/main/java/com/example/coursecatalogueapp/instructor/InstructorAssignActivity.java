@@ -3,6 +3,7 @@ package com.example.coursecatalogueapp.instructor;
 import android.app.Activity;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -37,9 +38,10 @@ public class InstructorAssignActivity extends Activity {
     TimePickerDialog picker;
     EditText inputCourseDescription, inputCourseCapacity, inputTime1, inputTime2;
     Spinner spinnerLectureDay1, spinnerLectureDay2;
-    TextView assignCourseTitle;
+    TextView assignCourseTitle, courseCodeText, courseNameText;
     Button assignButton;
-    Boolean isUpdate;
+    Boolean isUpdate = false;
+    String userId;
 
     Intent i;
 
@@ -77,12 +79,20 @@ public class InstructorAssignActivity extends Activity {
         assignCourseTitle = findViewById(R.id.instructorAssignTitle);
         inputTime1 = findViewById(R.id.timePickerInput1);
         inputTime2 = findViewById(R.id.timePickerInput2);
+        courseCodeText = findViewById(R.id.courseCodeText);
+        courseNameText = findViewById(R.id.courseNameText);
         //
+
+        //Get userId
+        SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
+        userId = sharedPref.getString(getString(R.string.user_uid_key), null);
 
         // Check if we are updating a course
         i = getIntent();
         isUpdate = i.getStringExtra("TAG").equals("update");
         courseId = i.getStringExtra("courseId");
+        courseCodeText.setText(i.getStringExtra("courseCode"));
+        courseNameText.setText(i.getStringExtra("courseName"));
         if (isUpdate) {
             // fill input fields
             assignButton.setText(R.string.update);
@@ -148,19 +158,20 @@ public class InstructorAssignActivity extends Activity {
 
                 if (isUpdate) {
                     updateCourseInfo(
+                            courseId,
                             courseDescription,
                             courseCapacity,
-                            courseId,
                             lecture1Day,
                             lecture2Day,
                             lecture1Time,
                             lecture2Time,
                             getCurrentFocus());
                 } else {
-                    createCourse(
+                    assignCourse(
+                            courseId,
+                            userId,
                             courseDescription,
                             courseCapacity,
-                            courseId,
                             lecture1Day,
                             lecture2Day,
                             lecture1Time,
@@ -193,8 +204,9 @@ public class InstructorAssignActivity extends Activity {
         back(view);
     }
 
-    public void createCourse(
+    public void assignCourse(
             final String courseId,
+            final String courseInstructor,
             final String courseDescription,
             final String courseCapacity,
             final String lecture1Day,
@@ -207,6 +219,7 @@ public class InstructorAssignActivity extends Activity {
         Map<String, Object> courseInfo = new HashMap<>();
         courseInfo.put("courseDescription", courseDescription);
         courseInfo.put("courseCapacity", courseCapacity);
+        courseInfo.put("courseInstructor", userId);
         courseInfo.put("lecture1Day", lecture1Day);
         courseInfo.put("lecture1Time", lecture1Time);
         courseInfo.put("lecture2Day", lecture2Day);

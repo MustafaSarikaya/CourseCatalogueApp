@@ -35,7 +35,7 @@ public class InstructorMyCourses extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_courses);
         firestore = FirebaseFirestore.getInstance();
-        courseReference = firestore.collection("mycourses");
+        courseReference = firestore.collection("courses");
         listView = findViewById(R.id.listView);
         mycourses=new ArrayList<>();
 
@@ -68,12 +68,13 @@ public class InstructorMyCourses extends Activity {
 
                     course.setCourseInstructor(courseInstructor);
                     course.setCourseDescription(courseDescription);
-                    course.setCourseCapacity(courseCode);
+                    course.setCourseCapacity(courseCapacity);
                     course.setLecture1Day(lecture1Day);
                     course.setLecture1Time(lecture1Time);
                     course.setLecture2Day(lecture2Day);
                     course.setLecture2Time(lecture2Time);
 
+                    mycourses.add(course);
                 }
                 setUpList(mycourses, listView);
             }

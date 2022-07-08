@@ -54,6 +54,11 @@
     <string name="first_lecture_day">Select First Lecture Day and Time</string>
     <string name="enter_time">Enter Time</string>
     <string name="second_lecture_day">Select Second Lecture Day and Time</string>
+    <string name="go_to_my_courses">Go to My Courses</string>
+    <string name="course_name_label">Course Name:</string>
+    <string name="course_code_label">Course Code:</string>
+    <string name="instructor_label">Instructor:</string>
+    <string name="instructor_my_courses">My Courses</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>
