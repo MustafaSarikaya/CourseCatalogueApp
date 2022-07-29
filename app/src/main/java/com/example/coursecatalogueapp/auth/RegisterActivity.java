@@ -45,15 +45,15 @@ public class RegisterActivity extends Activity {
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //This part is for testing purpose only
 
-    RegisterActivity(String name, String email, String password){
-        fullName = name;
-        this.email = email;
-        this.password = password;
-    }
-
-    public SignUpError validateInputForTesting(){
-        return validateInput(fullName, email, password);
-    }
+//    RegisterActivity(String name, String email, String password){
+//        fullName = name;
+//        this.email = email;
+//        this.password = password;
+//    }
+//
+//    public SignUpError validateInputForTesting(){
+//        return validateInput(fullName, email, password);
+//    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 

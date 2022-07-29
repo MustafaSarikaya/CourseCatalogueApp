@@ -39,14 +39,14 @@ public class LogInActivity extends Activity {
     ///////////////////////////////////////////////////////////////////////////////////////////////
     //This part is for testing purpose only
 
-    LogInActivity(String email, String password){
-        this.email = email;
-        this.password = password;
-    }
-
-    public LoginError validateInputForTesting(){
-        return validateInput(email, password);
-    }
+//    LogInActivity(String email, String password){
+//        this.email = email;
+//        this.password = password;
+//    }
+//
+//    public LoginError validateInputForTesting(){
+//        return validateInput(email, password);
+//    }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
