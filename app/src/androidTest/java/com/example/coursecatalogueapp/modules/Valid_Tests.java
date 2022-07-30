@@ -13,7 +13,6 @@ import java.util.List;
 
 
 public class Valid_Tests {
-
     @Test
     // Testing whether the student is already enrolled while attempting to enroll
     public void testEnrollment(){
@@ -44,8 +43,7 @@ public class Valid_Tests {
         Course c1 = new Course();
         Course c2 = new Course();
         c1.setLecture1Day(Day[0]);    c2.setLecture1Day(Day[1]);
-        c1.setLecture1Time("16:30");
-        c1.setLecture2Time("16:30");
+        c1.setLecture1Time("16:30");  c2.setLecture1Time("16:30");
 
         assertTrue(Validator.validTimeDay(c1,c2));
 
