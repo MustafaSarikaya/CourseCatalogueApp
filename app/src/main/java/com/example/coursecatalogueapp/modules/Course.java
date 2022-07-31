@@ -1,6 +1,7 @@
 package com.example.coursecatalogueapp.modules;
 
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Course {
 
@@ -10,34 +11,24 @@ public class Course {
     private String id;
     private String courseDescription;
     private String courseCapacity;
+    private int  courseCap;
+    private Student  courseStudents;
     private String lecture1Day;
     private String lecture1Time;
     private String lecture2Day;
     private String lecture2Time;
-    private String students;
-    private String lastStudent;
 
     public Course() {
         id = "";
         courseName = "";
         courseCode = "";
         courseInstructor= "";
-        students = "";
-        lastStudent = "";
-
     }
 
     public Course(String courseCode, String courseName, String id){
         this.courseCode=courseCode;
         this.courseName=courseName;
         this.id = id;
-    }
-
-    public Course(String courseCode, String courseName, String id, String students){
-        this.courseCode=courseCode;
-        this.courseName=courseName;
-        this.id = id;
-        this.students = students;
     }
 
     public String getId() {
@@ -79,6 +70,8 @@ public class Course {
     public String getCourseCapacity() {
         return courseCapacity;
     }
+    public Integer getCourseCap(){return courseCap;}
+    public Student getCourseStudents(){return courseStudents;}
 
     public void setCourseCapacity(String courseCapacity) {
         this.courseCapacity = courseCapacity;
@@ -116,39 +109,9 @@ public class Course {
         this.lecture2Time = lecture2Time;
     }
 
-    public void addStudent(String name){
 
-        if(students == null){
-            students = name;
-            lastStudent = name;
-        }
 
-        if(!name.equals(lastStudent) && name != null){
-            students = students + "," + name;
-            lastStudent = name;
-        }
-
-    }
-
-    public String getStudents(){
-        return students;
-    }
-
-    public void setStudents(String ss){
-        students = ss;
-    }
-
-    public void removeStudent(String name){
-
-        if(students != null) {
-            String[] s = students.split(",");
-            String newstudents = "";
-            for (int i = 0; i < s.length; i++){
-                if(!s[i].equals(name)){
-                    newstudents = newstudents + "," + s[i];
-                }
-            }
-            students = newstudents;
-        }
+    public void setCourseStudents(Student courseStudents) {
+        this.courseStudents = courseStudents;
     }
 }
