@@ -59,6 +59,8 @@
     <string name="course_code_label">Course Code:</string>
     <string name="instructor_label">Instructor:</string>
     <string name="instructor_my_courses">My Courses</string>
+    <string name="my_courses">My Courses</string>
+    <string name="enroll">Enroll</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>

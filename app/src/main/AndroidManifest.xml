@@ -17,7 +17,7 @@
         android:theme="@style/Theme.CourseCatalogueApp"
         tools:targetApi="31">
         <activity android:name=".auth.LogInActivity"
-        android:exported="true">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,6 +30,8 @@
         <activity android:name=".admin.AdminMainActivity"/>
         <activity android:name=".admin.AdminCourseListActivity"/>
         <activity android:name=".StudentMainActivity"/>
+        <activity android:name=".StudentCourseListActivity"/>
+        <activity android:name=".StudentEnrollListActivity"/>
         <activity android:name=".auth.MainActivity"/>
         <activity android:name=".instructor.InstructorMainActivity"/>
         <activity android:name=".instructor.InstructorMyCourses"/>
