@@ -1,0 +1,2 @@
+package com.example.coursecatalogueapp;public class StudentViewAdapter {
+}
