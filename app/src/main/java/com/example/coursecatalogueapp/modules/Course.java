@@ -1,5 +1,7 @@
 package com.example.coursecatalogueapp.modules;
 
+import java.util.LinkedList;
+
 public class Course {
 
     private String courseCode;
@@ -12,18 +14,30 @@ public class Course {
     private String lecture1Time;
     private String lecture2Day;
     private String lecture2Time;
+    private String students;
+    private String lastStudent;
 
     public Course() {
         id = "";
         courseName = "";
         courseCode = "";
         courseInstructor= "";
+        students = "";
+        lastStudent = "";
+
     }
 
     public Course(String courseCode, String courseName, String id){
         this.courseCode=courseCode;
         this.courseName=courseName;
         this.id = id;
+    }
+
+    public Course(String courseCode, String courseName, String id, String students){
+        this.courseCode=courseCode;
+        this.courseName=courseName;
+        this.id = id;
+        this.students = students;
     }
 
     public String getId() {
@@ -100,5 +114,41 @@ public class Course {
 
     public void setLecture2Time(String lecture2Time) {
         this.lecture2Time = lecture2Time;
+    }
+
+    public void addStudent(String name){
+
+        if(students == null){
+            students = name;
+            lastStudent = name;
+        }
+
+        if(!name.equals(lastStudent) && name != null){
+            students = students + "," + name;
+            lastStudent = name;
+        }
+
+    }
+
+    public String getStudents(){
+        return students;
+    }
+
+    public void setStudents(String ss){
+        students = ss;
+    }
+
+    public void removeStudent(String name){
+
+        if(students != null) {
+            String[] s = students.split(",");
+            String newstudents = "";
+            for (int i = 0; i < s.length; i++){
+                if(!s[i].equals(name)){
+                    newstudents = newstudents + "," + s[i];
+                }
+            }
+            students = newstudents;
+        }
     }
 }

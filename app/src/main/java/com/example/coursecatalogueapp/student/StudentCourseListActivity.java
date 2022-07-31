@@ -1,25 +1,21 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.student;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
 
-import com.example.coursecatalogueapp.admin.AdminCourseListActivity;
-import com.example.coursecatalogueapp.admin.AdminMainActivity;
-import com.example.coursecatalogueapp.admin.adapters.AdminCourseListAdapter;
-import com.example.coursecatalogueapp.admin.adapters.StudentCourseListAdapter;
+import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.student.adapters.StudentCourseListAdapter;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -31,7 +27,6 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class StudentCourseListActivity extends AppCompatActivity {
@@ -84,6 +79,7 @@ public class StudentCourseListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
 
 
         studentEnrollmentReference
@@ -143,17 +139,23 @@ public class StudentCourseListActivity extends AppCompatActivity {
                                                 courses.clear();
                                                 courseList.setAdapter(adapter);
                                                 setUpList(courses, courseList);
-
                             }
-
-
-
                         }
                     }
-
-
                 });
+    }
 
+    private void find(String str){
+        List<Course> myList = new ArrayList<>();
+        for(Course object: courses){
+            if(object.getCourseName().toLowerCase().contains(str.toLowerCase())){
+                myList.add(object);
+            }
+            else if(object.getCourseCode().toLowerCase().contains(str.toLowerCase())){
+                myList.add(object);
+            }
+            setUpList(myList, courseList);
+        }
     }
 
     private void setUpList(final List<Course> courses, ListView listView) {

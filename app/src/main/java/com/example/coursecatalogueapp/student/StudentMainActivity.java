@@ -1,6 +1,4 @@
-package com.example.coursecatalogueapp;
-
-import androidx.appcompat.app.AppCompatActivity;
+package com.example.coursecatalogueapp.student;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -10,14 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.coursecatalogueapp.admin.AdminCourseListActivity;
-import com.example.coursecatalogueapp.admin.AdminMainActivity;
-import com.example.coursecatalogueapp.modules.User;
+import com.example.coursecatalogueapp.R;
 
 public class StudentMainActivity extends Activity {
 
     TextView pageTitle, loginStatus;
-
     String userName, userRole;
     private Button Courses,Enroll;
 

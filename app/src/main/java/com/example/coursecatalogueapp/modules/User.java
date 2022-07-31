@@ -1,8 +1,11 @@
 package com.example.coursecatalogueapp.modules;
 
+import java.util.LinkedList;
+
 public abstract class User {
 
     private String name, role, emailAddress, uid;
+
 
     public User(String name, String role, String emailAddress, String uid){
         this.name = name;

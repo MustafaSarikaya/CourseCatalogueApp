@@ -1,20 +1,16 @@
-package com.example.coursecatalogueapp.instructor;
+package com.example.coursecatalogueapp;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.coursecatalogueapp.R;
-//import com.example.coursecatalogueapp.admin.expandableListAdapter;
-import com.example.coursecatalogueapp.instructor.adapters.InstructorMainAdapter;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
@@ -26,47 +22,36 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InstructorMainActivity extends Activity {
+public class StudentEnrollCourseActivity extends AppCompatActivity {
 
-    String userName;
-    static InstructorMainAdapter adapter;
+    static StudentErollAdapter adapter;
     ListView courseList;
     List<Course> courses;
-    Button myCoursesBtn;
-//   public static List<Course> myCourses;
+    List<String> courseTimes;
     SearchView search;
-    TextView pageTitle;
+    Intent i;
+    String userName;
+
 
     private FirebaseFirestore firestore;
     private CollectionReference courseReference;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_instructor_main);
+        setContentView(R.layout.activity_student_enroll_course);
+
 
         firestore = FirebaseFirestore.getInstance();
         courseReference = firestore.collection("courses");
-
-        myCoursesBtn = findViewById(R.id.btn_myCourses);
         search = findViewById(R.id.searchView);
         courseList = findViewById(R.id.listview);
-        pageTitle = findViewById(R.id.vcp_title);
-
         courses = new ArrayList<>();
-   //     myCourses = new ArrayList<>();
+        courseTimes = new ArrayList<>();
+        i = getIntent();
+        userName = i.getStringExtra("userName");
 
-        SharedPreferences sharedPref = getSharedPreferences(getPackageName() + "_preferences", MODE_PRIVATE);
-        userName = sharedPref.getString(getString(R.string.user_name_key), null);
-        pageTitle.setText("Welcome " + userName);
-
-        myCoursesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i = new Intent(InstructorMainActivity.this, InstructorMyCourses.class);
-                startActivity(i);
-            }
-        });
     }
 
     // Search bar
@@ -94,14 +79,26 @@ public class InstructorMainActivity extends Activity {
                 for(QueryDocumentSnapshot doc: value) {
                     String courseName = doc.getString("courseName");
                     String courseCode = doc.getString("courseCode");
-                    String courseInstructor = doc.getString("courseInstructor");
+                    String lecture1Day = doc.getString("lecture1Day");
+                    String lecture1Time = doc.getString("lecture1Time");
+                    String lecture2Day = doc.getString("lecture2Day");
+                    String lecture2Time = doc.getString("lecture2Time");
+                    String students = doc.getString("students");
                     String id = doc.getId();
-                    Course course = new Course(courseCode, courseName, id);
-                    course.setCourseInstructor(courseInstructor);
 
+                    Course course = new Course(courseCode, courseName, id);
+                    course.setStudents(students);
+                    course.setLecture1Day(lecture1Day);
+                    course.setLecture1Time(lecture1Time);
+                    course.setLecture2Day(lecture2Day);
+                    course.setLecture2Time(lecture2Time);
+                    if(isEnrolled(userName, students)) {
+                        courseTimes.add(lecture1Day + lecture1Time);
+                        courseTimes.add(lecture2Day + lecture2Time);
+                    }
                     courses.add(course);
                 }
-                setUpList(courses, courseList);
+                setUpList(courses, courseList, userName, courseTimes);
             }
         });
     }
@@ -116,13 +113,26 @@ public class InstructorMainActivity extends Activity {
             else if(object.getCourseCode().toLowerCase().contains(str.toLowerCase())){
                 myList.add(object);
             }
-            setUpList(myList, courseList);
+            setUpList(myList, courseList, userName, courseTimes);
         }
     }
 
-    private void setUpList(final List<Course> courses, ListView listView){
-        adapter = new InstructorMainAdapter(InstructorMainActivity.this, courses);
+    private void setUpList(final List<Course> courses, ListView listView, String n, List<String> courseTimes){
+        adapter = new StudentErollAdapter(StudentEnrollCourseActivity.this, courses, n, courseTimes);
         listView.setAdapter(adapter);
+    }
+
+    private boolean isEnrolled(String userName, String studentList){
+
+        if(studentList != null) {
+            String[] s = studentList.split(",");
+            for (int i = 0; i < s.length; i++) {
+                if (s[i].equals(userName)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }

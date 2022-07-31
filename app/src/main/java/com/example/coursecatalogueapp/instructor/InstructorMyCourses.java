@@ -61,10 +61,11 @@ public class InstructorMyCourses extends Activity {
                     String lecture1Time = doc.getString("lecture1Time");
                     String lecture2Day = doc.getString("lecture2Day");
                     String lecture2Time = doc.getString("lecture2Time");
+                    String students = doc.getString("students");
 
                     String id = doc.getId();
 
-                    Course course = new Course(courseCode, courseName, id);
+                    Course course = new Course(courseCode, courseName, id, students);
 
                     course.setCourseInstructor(courseInstructor);
                     course.setCourseDescription(courseDescription);

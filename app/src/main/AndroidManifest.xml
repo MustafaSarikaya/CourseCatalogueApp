@@ -29,13 +29,14 @@
         <activity android:name=".admin.AdminAddCourseActivity"/>
         <activity android:name=".admin.AdminMainActivity"/>
         <activity android:name=".admin.AdminCourseListActivity"/>
-        <activity android:name=".StudentMainActivity"/>
-        <activity android:name=".StudentCourseListActivity"/>
-        <activity android:name=".StudentEnrollListActivity"/>
+        <activity android:name=".student.StudentMainActivity"/>
+        <activity android:name=".student.StudentCourseListActivity"/>
+        <activity android:name=".student.StudentEnrollListActivity"/>
         <activity android:name=".auth.MainActivity"/>
         <activity android:name=".instructor.InstructorMainActivity"/>
         <activity android:name=".instructor.InstructorMyCourses"/>
         <activity android:name=".instructor.InstructorAssignActivity"/>
+        <activity android:name=".instructor.InstructorViewActivity" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

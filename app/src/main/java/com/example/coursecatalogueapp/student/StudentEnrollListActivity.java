@@ -1,6 +1,5 @@
-package com.example.coursecatalogueapp;
+package com.example.coursecatalogueapp.student;
 
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,15 +8,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 
-import com.example.coursecatalogueapp.admin.adapters.StudentCourseListAdapter;
-import com.example.coursecatalogueapp.admin.adapters.StudentEnrollListAdapter;
+import com.example.coursecatalogueapp.R;
+import com.example.coursecatalogueapp.student.adapters.StudentEnrollListAdapter;
 import com.example.coursecatalogueapp.modules.Course;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,8 +31,7 @@ public class StudentEnrollListActivity extends AppCompatActivity {
 
     static StudentEnrollListAdapter adapter;
     ImageView  HomeButton;
-    Intent intent;
-
+    SearchView search;
     List<Course> courses;
     String studentID;
     List<String> studentEnrollments;
@@ -79,6 +75,20 @@ public class StudentEnrollListActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        if (search!= null){
+            search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String query) {
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String newText) {
+                    find(newText);
+                    return true;
+                }
+            });
+        }
         makelist();
 
 
@@ -175,15 +185,23 @@ public class StudentEnrollListActivity extends AppCompatActivity {
                                             }
                                         });
                             }
-
-
-
-
                         }
                     }
-
-
                 });
+    }
+
+    //Search bar
+    private void find(String str){
+        List<Course> myList = new ArrayList<>();
+        for(Course object: courses){
+            if(object.getCourseName().toLowerCase().contains(str.toLowerCase())){
+                myList.add(object);
+            }
+            else if(object.getCourseCode().toLowerCase().contains(str.toLowerCase())){
+                myList.add(object);
+            }
+            setUpList(myList, courseList);
+        }
     }
 
     private static void enroll(final List<Course> enrolledCourses, Course course, String studentID) {
@@ -194,8 +212,6 @@ public class StudentEnrollListActivity extends AppCompatActivity {
             } else if (c.getLecture2Day().equals(course.getLecture2Day()) && c.getLecture2Time().equals(course.getLecture2Time())) {
                 update =false;
             }
-
-
         }
 
         if (update) {
@@ -224,62 +240,7 @@ public class StudentEnrollListActivity extends AppCompatActivity {
 
         studentEnrollmentReference.add(enrollInfo);
 
-//        List<Course> enrolledCourses;
-//        enrolledCourses = new ArrayList<>();
-//
-//        studentEnrollmentReference
-//                .whereEqualTo("studentID",studentID)
-//
-//                .get()
-//                .addOnCompleteListener( new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            enrolledCourses.clear();
-//                            for (QueryDocumentSnapshot document : task.getResult()) {
-//                                String courseCode = document.getString("courseID");
-//                                courseReference
-//                                        .whereEqualTo("courseCode", courseCode)
-//                                        .get()
-//                                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                                            @Override
-//                                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                                                if (task.isSuccessful()) {
-//
-//                                                    for (QueryDocumentSnapshot document : task.getResult()) {
-//
-//                                                        String courseName = document.getString("courseName");
-//                                                        String courseCode = document.getString("courseCode");
-//                                                        String id = document.getId();
-//                                                        //Create an course Object
-//                                                        Course c = new Course(courseCode, courseName, id);
-//                                                        c.setLecture1Day(document.getString("lecture1Day"));
-//                                                        c.setLecture1Time(document.getString("lecture1Time"));
-//                                                        c.setLecture2Day(document.getString("lecture2Day"));
-//                                                        c.setLecture2Time(document.getString("lecture2Time"));
-//                                                        enrolledCourses.add(c);
-//
-//                                                    }
-//                                                    enroll(enrolledCourses,course,studentID);
-//
-//
-//                                                }
-//                                            }
-//                                        });
-//
-//                            }
-//
-//
-//
-//                        }
-//                    }
-//                });
-
-
-
     }
-
-
 
     /**
      * Back button function

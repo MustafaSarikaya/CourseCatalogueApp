@@ -1,4 +1,4 @@
-package com.example.coursecatalogueapp.admin.adapters;
+package com.example.coursecatalogueapp.student.adapters;
 
 import android.app.Activity;
 import android.view.LayoutInflater;
@@ -12,19 +12,18 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.coursecatalogueapp.R;
-import com.example.coursecatalogueapp.StudentEnrollListActivity;
-import com.example.coursecatalogueapp.admin.AdminCourseListActivity;
+import com.example.coursecatalogueapp.student.StudentCourseListActivity;
 import com.example.coursecatalogueapp.modules.Course;
 
 import java.util.List;
 
-public class StudentEnrollListAdapter extends ArrayAdapter<Course> {
+public class StudentCourseListAdapter extends ArrayAdapter<Course> {
     private Activity context;
     List<Course> courses;
     String studentID;
 
-    public StudentEnrollListAdapter(@NonNull Activity context, @NonNull List<Course> courses, @NonNull String  studentID) {
-        super(context, R.layout.student_enroll_list_row, courses);
+    public StudentCourseListAdapter(@NonNull Activity context, @NonNull List<Course> courses,@NonNull String  studentID) {
+        super(context, R.layout.course_list_row, courses);
         this.context = context;
         this.courses = courses;
         this.studentID = studentID;
@@ -34,7 +33,7 @@ public class StudentEnrollListAdapter extends ArrayAdapter<Course> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater =(LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View listViewItem = layoutInflater.inflate(R.layout.student_enroll_list_row, null,true);
+        View listViewItem = layoutInflater.inflate(R.layout.student_course_list_row, null,true);
 
         TextView courseName = listViewItem.findViewById(R.id.courseName);
         TextView courseCode = listViewItem.findViewById(R.id.courseCode);
@@ -54,15 +53,13 @@ public class StudentEnrollListAdapter extends ArrayAdapter<Course> {
 
 
 
-       
 
         //Set delete button functions
-        ImageButton deleteButton = (ImageButton) listViewItem.findViewById(R.id.courseEnrollBtn);
+        ImageButton deleteButton = (ImageButton) listViewItem.findViewById(R.id.courseDeleteBtn);
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                StudentEnrollListActivity.enrollCourse(course,studentID);
+                StudentCourseListActivity.deleteCourse(course,studentID);
             }
         });
 
