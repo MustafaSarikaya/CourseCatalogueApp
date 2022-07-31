@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 
 import com.example.coursecatalogueapp.R;
 import com.example.coursecatalogueapp.instructor.InstructorAssignActivity;
+import com.example.coursecatalogueapp.instructor.InstructorViewActivity;
 import com.example.coursecatalogueapp.modules.Course;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -42,12 +43,13 @@ public class InstructorMyCoursesAdapter extends ArrayAdapter<Course> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-        View listViewItem = layoutInflater.inflate(R.layout.course_list_row, null, true);
+        View listViewItem = layoutInflater.inflate(R.layout.instructor_course_list_row, null, true);
         TextView name = listViewItem.findViewById(R.id.courseName);
         TextView code = listViewItem.findViewById(R.id.courseCode);
         Course course = mycourses.get(position);
         ImageButton delete = listViewItem.findViewById(R.id.courseDeleteBtn);
         ImageButton update = listViewItem.findViewById(R.id.courseEditBtn);
+        ImageButton students = listViewItem.findViewById(R.id.courseStudentsBtn);
 
 
         firestore = FirebaseFirestore.getInstance();
@@ -88,6 +90,19 @@ public class InstructorMyCoursesAdapter extends ArrayAdapter<Course> {
                 courseReference.document(course.getId()).set(courseInfo, SetOptions.merge());
                 Toast.makeText(context, "Course deleted from your schedule", Toast.LENGTH_SHORT).show();
             }
+        });
+
+        students.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context, InstructorViewActivity.class);
+                i.putExtra("courseId", course.getId());
+                i.putExtra("courseName", course.getCourseName());
+                i.putExtra("courseCode", course.getCourseCode());
+//                i.putExtra("students", course.getStudents());
+                context.startActivity(i);
+            }
+
         });
         return listViewItem;
 

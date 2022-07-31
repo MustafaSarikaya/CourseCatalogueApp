@@ -9,7 +9,7 @@
     tools:context=".instructor.InstructorMainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbarInstructorMain"
+        android:id="@+id/toolbarStudentViewCourse"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorPrimary"
@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/instructorMainTitle"
+        android:id="@+id/vcp_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toBottomOf="@id/toolbarInstructorMain" />
+        app:layout_constraintBottom_toBottomOf="@id/toolbarStudentViewCourse" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
@@ -44,7 +44,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbarInstructorMain" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbarStudentViewCourse" />
 
     <View
         android:id="@+id/divider3"

@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 
 import com.example.coursecatalogueapp.instructor.InstructorMainActivity;
 import com.example.coursecatalogueapp.R;
-import com.example.coursecatalogueapp.StudentMainActivity;
+import com.example.coursecatalogueapp.student.StudentMainActivity;
 import com.example.coursecatalogueapp.admin.AdminMainActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

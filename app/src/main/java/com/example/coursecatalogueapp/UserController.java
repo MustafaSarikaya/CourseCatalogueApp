@@ -92,10 +92,10 @@ public class UserController {
                         String n = (String) documentSnapshot.getData().get("name");
                         String r = (String) documentSnapshot.getData().get("role");
                         switch(r) {
-                            case "instructor":
+                            case "Instructor":
                                 setUserAccount(new Instructor(n, email, auth.getCurrentUser().getUid()));
                                 break;
-                            case "student":
+                            case "Student":
                                 setUserAccount(new Student(n, email, auth.getCurrentUser().getUid()));
                                 break;
                             default:

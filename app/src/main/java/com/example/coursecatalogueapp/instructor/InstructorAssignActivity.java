@@ -38,6 +38,7 @@ public class InstructorAssignActivity extends Activity {
     private String courseDescription, courseCapacity, courseId, lecture1Day, lecture2Day, lecture1Time, lecture2Time;
     private FirebaseFirestore db;
     private CollectionReference coursesReference;
+
     //Declare UI elements
     TimePickerDialog picker;
     EditText inputCourseDescription, inputCourseCapacity, inputTime1, inputTime2;
@@ -46,7 +47,6 @@ public class InstructorAssignActivity extends Activity {
     Button assignButton;
     Boolean isUpdate = false;
     String userId;
-
     Intent i;
 
     @Override
