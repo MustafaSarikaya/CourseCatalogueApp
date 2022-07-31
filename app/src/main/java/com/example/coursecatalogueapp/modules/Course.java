@@ -142,7 +142,7 @@ public class Course {
 
         if(students != null) {
             String[] s = students.split(",");
-            String newstudents = ",";
+            String newstudents = "";
             for (int i = 0; i < s.length; i++){
                 if(!s[i].equals(name)){
                     newstudents = newstudents + "," + s[i];

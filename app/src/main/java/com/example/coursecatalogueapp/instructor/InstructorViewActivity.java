@@ -33,7 +33,9 @@ public class InstructorViewActivity extends Activity {
 
         s = students.split(",");
         for(int i = 0; i < s.length; i++){
-            studentList.add(s[i]);
+            if(!s[i].equals("")){
+                studentList.add(s[i]);
+            }
         }
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, studentList);
         studentListView.setAdapter(adapter);
