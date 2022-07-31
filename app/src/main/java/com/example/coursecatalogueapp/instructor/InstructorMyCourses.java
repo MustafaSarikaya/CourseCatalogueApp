@@ -65,7 +65,7 @@ public class InstructorMyCourses extends Activity {
 
                     String id = doc.getId();
 
-                    Course course = new Course(courseCode, courseName, id, students);
+                    Course course = new Course(courseCode, courseName, id);
 
                     course.setCourseInstructor(courseInstructor);
                     course.setCourseDescription(courseDescription);
