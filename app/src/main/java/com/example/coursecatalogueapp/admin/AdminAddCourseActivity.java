@@ -23,6 +23,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
 
 
@@ -124,6 +125,7 @@ public class AdminAddCourseActivity extends Activity {
         courseInfo.put("courseName", courseName);
         courseInfo.put("courseCode", courseCode);
         courseInfo.put("courseInstructor", "");
+        courseInfo.put("students", new LinkedList<String>());
 
         coursesReference.add(courseInfo);
         back(view);

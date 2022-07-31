@@ -11,7 +11,7 @@
     <string name="submit">Submit</string>
     <string name="students">Students</string>
     <string name="instructors">Instructors</string>
-    <string name ="done">done</string>
+    <string name="done">done</string>
     <string name="courses">Courses</string>
     <string name="instructorList">Instructors</string>
     <string name="studentList">Students</string>
@@ -59,6 +59,9 @@
     <string name="course_code_label">Course Code:</string>
     <string name="instructor_label">Instructor:</string>
     <string name="instructor_my_courses">My Courses</string>
+    <string name="view_enrolled_courses">View Enrolled Courses</string>
+    <string name="enroll_a_course">Enroll a course</string>
+    <string name="currently_enrolled_students">Currently Enrolled Students:</string>
     <string-array name="user_type">
         <item>Select</item>
         <item>Instructor</item>

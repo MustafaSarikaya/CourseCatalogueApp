@@ -31,11 +31,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/role_display"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbarStudentMain" >
+        app:layout_constraintTop_toBottomOf="@id/toolbarStudentMain">
 
         <TextView
             android:id="@+id/loginStatusStudent"
@@ -45,5 +46,25 @@
             android:textAlignment="center"
             android:textSize="16sp" />
     </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_view_enrolled_courses"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:text="@string/view_enrolled_courses"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/role_display" />
+
+    <Button
+        android:id="@+id/btn_enroll_a_course"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/enroll_a_course"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_view_enrolled_courses" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

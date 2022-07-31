@@ -43,6 +43,7 @@ public class AdminMainActivity extends Activity {
                 startActivity(intent);
             }
         });
+
         Courses.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

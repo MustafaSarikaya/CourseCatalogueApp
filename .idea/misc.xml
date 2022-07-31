@@ -24,6 +24,21 @@
         <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/instructor_course_row.xml" value="0.33" />
         <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/list_row.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Selim/Desktop/seg2105/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/popup.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.368" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_admin_main.xml" value="0.3211050724637681" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_admin_user_list.xml" value="0.3211050724637681" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_instructor_assign.xml" value="0.3211050724637681" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_instructor_main.xml" value="0.5" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_instructor_my_courses.xml" value="0.1796875" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_instructor_view.xml" value="0.22" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_student_enroll_course.xml" value="0.3211050724637681" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_student_main.xml" value="0.3671875" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/activity_student_view_course.xml" value="0.3211050724637681" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/course_list_row.xml" value="0.17857142857142858" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/instructor_course_list_row.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/instructor_course_row.xml" value="0.17857142857142858" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/list_row.xml" value="0.17857142857142858" />
+        <entry key="..\:/Users/kaiyu/Documents/uOttawa/2022 Spring and Summer/SEG2105 Intro to Software Engineering/TermDeliverable/CourseCatalogueApp_SEG2105_Group6/app/src/main/res/layout/popup.xml" value="0.17857142857142858" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2055" />
         <entry key="app/src/main/res/drawable/add_instructor.xml" value="0.3465" />
         <entry key="app/src/main/res/drawable/arrow_right.xml" value="0.3465" />
@@ -76,5 +91,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.3211050724637681" />
+      </ProjectState>
+    </option>
   </component>
 </project>

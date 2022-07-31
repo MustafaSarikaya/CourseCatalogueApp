@@ -6,4 +6,50 @@
     android:layout_height="match_parent"
     tools:context=".StudentEnrollCourseActivity">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/divider3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="4dp"
+        android:background="?android:attr/listDivider"
+        android:backgroundTint="@color/purple_500"
+        android:backgroundTintMode="screen"
+        app:layout_constraintBottom_toTopOf="@id/listview"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchView" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:clickable="true"
+        android:contextClickable="true"
+        android:focusable="true"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/divider3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:ignore="DuplicateSpeakableTextCheck"
+        tools:layout_editor_absoluteY="50dp">
+
+    </ListView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
