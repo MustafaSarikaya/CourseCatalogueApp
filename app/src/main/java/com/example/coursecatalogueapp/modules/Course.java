@@ -1,5 +1,8 @@
 package com.example.coursecatalogueapp.modules;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Course {
 
     private String courseCode;
@@ -8,16 +11,18 @@ public class Course {
     private String id;
     private String courseDescription;
     private String courseCapacity;
+    private int  courseCap;
+    private Student  courseStudents;
     private String lecture1Day;
     private String lecture1Time;
     private String lecture2Day;
     private String lecture2Time;
-
     public Course() {
         id = "";
         courseName = "";
         courseCode = "";
         courseInstructor= "";
+
     }
 
     public Course(String courseCode, String courseName, String id){
@@ -65,6 +70,8 @@ public class Course {
     public String getCourseCapacity() {
         return courseCapacity;
     }
+    public Integer getCourseCap(){return courseCap;}
+    public Student getCourseStudents(){return courseStudents;}
 
     public void setCourseCapacity(String courseCapacity) {
         this.courseCapacity = courseCapacity;
@@ -100,5 +107,11 @@ public class Course {
 
     public void setLecture2Time(String lecture2Time) {
         this.lecture2Time = lecture2Time;
+    }
+
+
+
+    public void setCourseStudents(Student courseStudents) {
+        this.courseStudents = courseStudents;
     }
 }
